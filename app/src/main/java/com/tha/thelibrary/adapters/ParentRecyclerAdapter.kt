@@ -5,15 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tha.thelibrary.R
+import com.tha.thelibrary.delegates.ParentRecyclerDelegate
 import com.tha.thelibrary.view.viewholders.ParentRecyclerViewHolder
 
-class ParentRecyclerAdapter : RecyclerView.Adapter<ParentRecyclerViewHolder>() {
+class ParentRecyclerAdapter(private val mDelegate: ParentRecyclerDelegate) : RecyclerView.Adapter<ParentRecyclerViewHolder>() {
     private lateinit var mChildRecyclerAdapter: ChildRecyclerAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParentRecyclerViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.view_holder_parent_item, parent, false)
-        return ParentRecyclerViewHolder(view)
+        return ParentRecyclerViewHolder(view,mDelegate)
     }
 
     override fun onBindViewHolder(holder: ParentRecyclerViewHolder, position: Int) {
