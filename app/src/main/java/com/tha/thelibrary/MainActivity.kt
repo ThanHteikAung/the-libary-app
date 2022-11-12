@@ -2,10 +2,41 @@ package com.tha.thelibrary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
+import com.tha.thelibrary.adapters.CarouselAdapter
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.abs
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var mCarouselAdapter: CarouselAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setUpCarouselViewPager()
+    }
+
+    //Setup Carousel
+    private fun setUpCarouselViewPager() {
+        mCarouselAdapter = CarouselAdapter()
+        vpCarousel.adapter = mCarouselAdapter
+        vpCarousel.clipToPadding = false
+        vpCarousel.clipChildren = false
+        vpCarousel.offscreenPageLimit = 5
+        vpCarousel.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
+        //add some space between the carousel items
+        val compositePageTransformer = CompositePageTransformer()
+        compositePageTransformer.addTransformer(MarginPageTransformer(40))
+
+        //Adding Scaling (Zoom-in) Effect
+        compositePageTransformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = (0.85f + r * 0.15f)
+        }
+        vpCarousel.setPageTransformer(compositePageTransformer)
     }
 }

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TheLibrary</string>
+    <string name="txt_search">Search Play Books</string>
+    <string name="txt_outer_header">Ebooks for you</string>
+    <string name="txt_book_name">Learn Ux Design</string>
+    <string name="txt_author_name">Douglas J Alford</string>
+    <string name="txt_home">Home</string>
+    <string name="txt_library">Library</string>
 </resources>
