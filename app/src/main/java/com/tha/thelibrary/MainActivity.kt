@@ -2,9 +2,11 @@ package com.tha.thelibrary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import com.tha.thelibrary.adapters.ParentRecyclerAdapter
 import com.tha.thelibrary.adapters.CarouselAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.math.abs
@@ -12,12 +14,14 @@ import kotlin.math.abs
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mCarouselAdapter: CarouselAdapter
+    private lateinit var mOuterRecyclerAdapter: ParentRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setUpCarouselViewPager()
         setUpTabLayout()
+        setUpParentRecycler()
     }
 
     //Setup Carousel
@@ -50,5 +54,13 @@ class MainActivity : AppCompatActivity() {
                 tbBooksGeneric.addTab(this)
             }
         }
+    }
+
+    //setup outer recycler view
+    private fun setUpParentRecycler() {
+        mOuterRecyclerAdapter = ParentRecyclerAdapter()
+        rvParentRecycler.adapter = mOuterRecyclerAdapter
+        rvParentRecycler.layoutManager =
+            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
     }
 }

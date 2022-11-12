@@ -26,4 +26,11 @@
         app:tabSelectedTextColor="@color/colorSecondary"
         app:tabTextColor="@color/colorPrimary" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvParentRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tbBooksGeneric"
+        android:layout_marginTop="@dimen/margin_medium_2" />
+
 </RelativeLayout>
