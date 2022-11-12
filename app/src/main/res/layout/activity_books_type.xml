@@ -6,11 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".activities.BooksTypeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBooksTypeHeader"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Activity"
-        android:layout_centerInParent="true"
-        android:textSize="@dimen/text_big"/>
+        android:text="@string/txt_books_type"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_regular_2x"
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        app:icon="@drawable/ic_baseline_keyboard_arrow_left_black_24dp"
+        app:iconTint="@color/colorSecondary"
+        app:iconGravity="start"
+        app:iconSize="@dimen/margin_large"/>
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBooksType"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_below="@id/btnBooksTypeHeader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>
