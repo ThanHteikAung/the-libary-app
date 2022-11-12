@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tha.thelibrary.view.viewpods.SearchBarViewPod xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_height_medium"
+        android:layout_marginLeft="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:layout_marginRight="@dimen/margin_medium_2"
+        android:background="@drawable/background_search_bar"
+        android:text="@string/txt_search"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_regular_2x"
+        app:icon="@drawable/ic_baseline_search_black_24dp"
+        app:iconGravity="start"
+        app:iconTint="@color/colorPrimary"/>
+
+    <com.tha.thelibrary.view.components.CustomViewProfileCircle
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignTop="@id/searchBar"
+        android:layout_alignEnd="@id/searchBar"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:elevation="3dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile_img"
+        app:profile_bottom_color="@color/profile_bottom_color"
+        app:profile_left_color="@color/profile_left_color"
+        app:profile_right_color="@color/profile_right_color"
+        app:profile_top_color="@color/profile_top_color" />
+
+</com.tha.thelibrary.view.viewpods.SearchBarViewPod>

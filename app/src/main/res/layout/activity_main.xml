@@ -1,36 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vpCarousel"
+    <include
+        layout="@layout/view_pod_search_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_carousel"
-        android:paddingStart="@dimen/padding_start_carousel"
-        android:paddingEnd="@dimen/padding_end_carousel" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin_large" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tbBooksGeneric"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/vpCarousel"
-        android:layout_marginTop="@dimen/margin_medium_3"
-        app:tabIndicator="@drawable/tab_indicator_customize"
-        app:tabIndicatorColor="@color/colorSecondary"
-        app:tabIndicatorFullWidth="false"
-        app:tabIndicatorHeight="@dimen/margin_small"
-        app:tabSelectedTextColor="@color/colorSecondary"
-        app:tabTextColor="@color/colorPrimary" />
+        android:layout_height="100dp"
+        android:background="@android:color/transparent"
+        app:elevation="0dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvParentRecycler"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tbBooksGeneric"
-        android:layout_marginTop="@dimen/margin_medium_2" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-</RelativeLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpCarousel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_carousel"
+            android:paddingStart="@dimen/padding_start_carousel"
+            android:paddingEnd="@dimen/padding_end_carousel" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tbBooksGeneric"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vpCarousel"
+            android:layout_marginTop="@dimen/margin_medium_3"
+            app:tabIndicator="@drawable/tab_indicator_customize"
+            app:tabIndicatorColor="@color/colorSecondary"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="@dimen/margin_small"
+            app:tabSelectedTextColor="@color/colorSecondary"
+            app:tabTextColor="@color/colorPrimary" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvParentRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tbBooksGeneric"
+            android:layout_marginTop="@dimen/margin_medium_2" />
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
