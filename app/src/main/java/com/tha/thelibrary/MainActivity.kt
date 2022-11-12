@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setUpCarouselViewPager()
+        setUpTabLayout()
     }
 
     //Setup Carousel
@@ -38,5 +39,16 @@ class MainActivity : AppCompatActivity() {
             page.scaleY = (0.85f + r * 0.15f)
         }
         vpCarousel.setPageTransformer(compositePageTransformer)
+    }
+
+    //setup tab layout
+    private fun setUpTabLayout() {
+        val tabDataList = listOf("Ebooks", "Audiobooks")
+        tabDataList.forEach {
+            tbBooksGeneric.newTab().apply {
+                text = it
+                tbBooksGeneric.addTab(this)
+            }
+        }
     }
 }

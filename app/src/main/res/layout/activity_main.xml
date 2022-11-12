@@ -13,4 +13,17 @@
         android:paddingStart="@dimen/padding_start_carousel"
         android:paddingEnd="@dimen/padding_end_carousel" />
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tbBooksGeneric"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vpCarousel"
+        android:layout_marginTop="@dimen/margin_medium_3"
+        app:tabIndicator="@drawable/tab_indicator_customize"
+        app:tabIndicatorColor="@color/colorSecondary"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="@dimen/margin_small"
+        app:tabSelectedTextColor="@color/colorSecondary"
+        app:tabTextColor="@color/colorPrimary" />
+
 </RelativeLayout>
