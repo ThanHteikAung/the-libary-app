@@ -4,10 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.GridLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tha.thelibrary.R
-import com.tha.thelibrary.adapters.CarouselAdapter
 import com.tha.thelibrary.adapters.ChildRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_books_type.*
 
@@ -15,9 +13,9 @@ class BooksTypeActivity : AppCompatActivity() {
 
     private lateinit var mChildRecyclerAdapter: ChildRecyclerAdapter
 
-    companion object{
+    companion object {
         fun newIntent(context: Context): Intent {
-            return Intent(context,BooksTypeActivity::class.java)
+            return Intent(context, BooksTypeActivity::class.java)
         }
     }
 
@@ -28,9 +26,9 @@ class BooksTypeActivity : AppCompatActivity() {
     }
 
     //setup BooksType Recycler View
-    private fun setUpBooksTypeRecycler(){
+    private fun setUpBooksTypeRecycler() {
         mChildRecyclerAdapter = ChildRecyclerAdapter()
         rvBooksType.adapter = mChildRecyclerAdapter
-        rvBooksType.layoutManager = GridLayoutManager(parent,2,GridLayoutManager.VERTICAL,false)
+        rvBooksType.layoutManager = GridLayoutManager(parent, 2, GridLayoutManager.VERTICAL, false)
     }
 }

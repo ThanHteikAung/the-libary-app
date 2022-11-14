@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/homeActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -45,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/vpCarousel"
-                    android:layout_marginTop="@dimen/margin_medium_3"
+                    android:layout_marginTop="@dimen/margin_medium"
                     app:tabIndicator="@drawable/tab_indicator_customize"
                     app:tabIndicatorColor="@color/colorSecondary"
                     app:tabIndicatorFullWidth="false"
@@ -58,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tbBooksGeneric"
-                    android:layout_marginTop="@dimen/margin_medium_2" />
+                    android:layout_marginTop="@dimen/margin_medium" />
 
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>

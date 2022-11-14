@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="150dp"
+    android:id="@+id/rlChildItemLayout"
+    android:layout_width="@dimen/width_child_item"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/margin_medium_2">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivInnerGenreBooks"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/height_child_image"
         android:src="@drawable/book_img2"
         android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="@style/roundedImageView"
         />
+
+    <ImageView
+        android:layout_width="@dimen/width_inner_item"
+        android:layout_height="@dimen/height_inner_item"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:src="@drawable/ic_baseline_more_horiz_white_24dp" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBooksName"
         android:layout_below="@id/ivInnerGenreBooks"

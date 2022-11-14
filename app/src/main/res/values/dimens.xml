@@ -50,6 +50,8 @@
     <dimen name="padding_start_carousel">80dp</dimen>
     <dimen name="padding_end_carousel">80dp</dimen>
     <dimen name="height_carousel">200dp</dimen>
+    <dimen name="width_child_item">130dp</dimen>
+    <dimen name="height_child_image">150dp</dimen>
 
 
 </resources>
