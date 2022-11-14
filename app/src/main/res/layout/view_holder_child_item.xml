@@ -16,6 +16,7 @@
         />
 
     <ImageView
+        android:id="@+id/ivChildOptionMenu"
         android:layout_width="@dimen/width_inner_item"
         android:layout_height="@dimen/height_inner_item"
         android:layout_alignParentEnd="true"

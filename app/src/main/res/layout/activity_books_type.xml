@@ -1,33 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.BooksTypeActivity">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnBooksTypeHeader"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_books_type"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/text_regular_2x"
-        android:textAllCaps="false"
-        android:textAlignment="center"
-        app:icon="@drawable/ic_baseline_keyboard_arrow_left_black_24dp"
-        app:iconTint="@color/colorSecondary"
-        app:iconGravity="start"
-        app:iconSize="@dimen/margin_large"/>
-    
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBooksType"
-        android:layout_marginTop="@dimen/margin_medium_2"
-        android:layout_below="@id/btnBooksTypeHeader"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingEnd="@dimen/margin_medium_2"
-        android:clipToPadding="false"/>
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBooksTypeHeader"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_books_type"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_regular_2x"
+            app:icon="@drawable/ic_baseline_keyboard_arrow_left_black_24dp"
+            app:iconGravity="start"
+            app:iconSize="@dimen/margin_large"
+            app:iconTint="@color/colorSecondary" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBooksType"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/btnBooksTypeHeader"
+            android:layout_marginTop="@dimen/margin_medium_2"
+            android:clipToPadding="false"
+            android:paddingEnd="@dimen/margin_medium_2" />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/bookTypeBottomSheet"
+        layout="@layout/option_menu_book_sheet" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

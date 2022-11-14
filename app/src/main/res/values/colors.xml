@@ -8,4 +8,5 @@
     <color name="profile_bottom_color">#4B974B</color>
     <color name="profile_left_color">#EBB03C</color>
     <color name="blackTransparent">#A1000000</color>
+    <color name="colorSecondaryTransparency">#4D33354E</color>
 </resources>

@@ -64,4 +64,10 @@
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
     </RelativeLayout>
+    <include
+        android:id="@+id/bottomSheet"
+        layout="@layout/option_menu_book_sheet"/>
+    <include
+        android:id="@+id/carouselBottomSheet"
+        layout="@layout/carousel_menu_book_sheet"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
