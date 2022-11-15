@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/homeActivity"
@@ -8,70 +8,26 @@
     tools:context=".activities.MainActivity">
 
     <include
+        android:id="@+id/mainSearchBar"
         layout="@layout/view_pod_search_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/margin_large" />
+        android:layout_height="@dimen/height_search_bar" />
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@android:color/transparent"
-        app:elevation="0dp" />
-
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/mainFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:layout_above="@id/bottomNavigate"
+        android:layout_below="@id/mainSearchBar"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical">
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigate"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="@color/bnv_tab_item_foreground"
+        app:itemTextColor="@color/bnv_tab_item_foreground"
+        app:menu="@menu/bottom_navigation_menu" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/vpCarousel"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_carousel"
-                    android:paddingStart="@dimen/padding_start_carousel"
-                    android:paddingEnd="@dimen/padding_end_carousel" />
-
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tbBooksGeneric"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/vpCarousel"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    app:tabIndicator="@drawable/tab_indicator_customize"
-                    app:tabIndicatorColor="@color/colorSecondary"
-                    app:tabIndicatorFullWidth="false"
-                    app:tabIndicatorHeight="@dimen/margin_small"
-                    app:tabSelectedTextColor="@color/colorSecondary"
-                    app:tabTextColor="@color/colorPrimary" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvParentRecycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tbBooksGeneric"
-                    android:layout_marginTop="@dimen/margin_medium" />
-
-            </RelativeLayout>
-        </androidx.core.widget.NestedScrollView>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigate"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_alignParentBottom="true"
-            app:itemIconTint="@color/bnv_tab_item_foreground"
-            app:itemTextColor="@color/bnv_tab_item_foreground"
-            app:menu="@menu/bottom_navigation_menu" />
-    </RelativeLayout>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

@@ -2,111 +2,40 @@ package com.tha.thelibrary.activities
 
 
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
-import com.google.android.material.tabs.TabLayout
+import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import com.tha.thelibrary.R
-import com.tha.thelibrary.adapters.CarouselAdapter
-import com.tha.thelibrary.adapters.ParentRecyclerAdapter
-import com.tha.thelibrary.delegates.CarouselDelegate
-import com.tha.thelibrary.delegates.ChildRecyclerDelegate
-import com.tha.thelibrary.delegates.ParentRecyclerDelegate
+import com.tha.thelibrary.fragments.HomeFragment
+import com.tha.thelibrary.fragments.LibraryFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.math.abs
 
-class MainActivity : BaseActivity(), ParentRecyclerDelegate, ChildRecyclerDelegate,
-    CarouselDelegate {
-
-    private lateinit var mCarouselAdapter: CarouselAdapter
-    private lateinit var mOuterRecyclerAdapter: ParentRecyclerAdapter
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setUpCarouselViewPager()
-        setUpTabLayout()
-        setUpParentRecycler()
-        setUpTabLayoutListener()
+        swiftFragment(HomeFragment())
+        setUpBottomNavigationListener()
     }
 
-    //Setup Carousel
-    private fun setUpCarouselViewPager() {
-        mCarouselAdapter = CarouselAdapter(this)
-        vpCarousel.adapter = mCarouselAdapter
-        vpCarousel.clipToPadding = false
-        vpCarousel.clipChildren = false
-        vpCarousel.offscreenPageLimit = 5
-        vpCarousel.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-
-        //add some space between the carousel items
-        val compositePageTransformer = CompositePageTransformer()
-        compositePageTransformer.addTransformer(MarginPageTransformer(0))
-
-        //Adding Scaling (Zoom-in) Effect
-        compositePageTransformer.addTransformer { page, position ->
-            val r = 1 - abs(position)
-            page.scaleY = (0.85f + r * 0.15f)
-        }
-        vpCarousel.setPageTransformer(compositePageTransformer)
-    }
-
-    //setup tab layout
-    private fun setUpTabLayout() {
-        val tabDataList = listOf("Ebooks", "Audiobooks")
-        tabDataList.forEach {
-            tbBooksGeneric.newTab().apply {
-                text = it
-                tbBooksGeneric.addTab(this)
+    //setup bottomNavigation listener
+    private fun setUpBottomNavigationListener() {
+        bottomNavigate.setOnItemSelectedListener { menuItem: MenuItem ->
+            when (menuItem.itemId) {
+                R.id.homeMenu -> {
+                    swiftFragment(HomeFragment())
+                }
+                R.id.libraryMenu -> {
+                    swiftFragment(LibraryFragment())
+                }
             }
+            true
         }
     }
 
-    //setup outer recycler view
-    private fun setUpParentRecycler() {
-        mOuterRecyclerAdapter = ParentRecyclerAdapter(this, this)
-        rvParentRecycler.adapter = mOuterRecyclerAdapter
-        rvParentRecycler.layoutManager =
-            LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+    private fun swiftFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.mainFrameLayout, fragment)
+            .commit()
     }
-
-    override fun onTapParentRecyclerHeader() {
-        startActivity(BooksTypeActivity.newIntent(this))
-    }
-
-    //setup tab layout listener
-    private fun setUpTabLayoutListener() {
-        tbBooksGeneric.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-
-                /*when(tab?.position){
-                    0 ->{
-                        vpCarousel.setPadding(260,0,260,0)
-                    }
-                    1->{
-                        vpCarousel.setPadding(400,0,400,0)
-                    }
-                }*/
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-
-            }
-        })
-    }
-
-
-    override fun onTapCarouselOptionMenu() {
-        showBottomSheet(this, R.layout.carousel_menu_book_sheet)
-    }
-
-    override fun onTapOptionMenu() {
-        showBottomSheet(this, R.layout.option_menu_book_sheet)
-    }
-
 }

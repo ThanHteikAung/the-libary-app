@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.HomeFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpCarousel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_carousel"
+                android:paddingStart="@dimen/padding_start_carousel"
+                android:paddingEnd="@dimen/padding_end_carousel" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tbBooksGeneric"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/vpCarousel"
+                android:layout_marginTop="@dimen/margin_medium"
+                app:tabIndicator="@drawable/tab_indicator_customize"
+                app:tabIndicatorColor="@color/colorSecondary"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="@dimen/margin_small"
+                app:tabSelectedTextColor="@color/colorSecondary"
+                app:tabTextColor="@color/colorPrimary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvParentRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tbBooksGeneric"
+                android:layout_marginTop="@dimen/margin_medium" />
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
