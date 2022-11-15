@@ -102,11 +102,11 @@ class MainActivity : BaseActivity(), ParentRecyclerDelegate, ChildRecyclerDelega
 
 
     override fun onTapCarouselOptionMenu() {
-        showBottomSheet(carouselBottomSheet)
+        showBottomSheet(this, R.layout.carousel_menu_book_sheet)
     }
 
     override fun onTapOptionMenu() {
-        showBottomSheet(bottomSheet)
+        showBottomSheet(this, R.layout.option_menu_book_sheet)
     }
 
 }

@@ -35,8 +35,4 @@
             android:paddingEnd="@dimen/margin_medium_2" />
     </RelativeLayout>
 
-    <include
-        android:id="@+id/bookTypeBottomSheet"
-        layout="@layout/option_menu_book_sheet" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

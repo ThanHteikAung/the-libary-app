@@ -52,6 +52,8 @@
     <dimen name="height_carousel">200dp</dimen>
     <dimen name="width_child_item">130dp</dimen>
     <dimen name="height_child_image">150dp</dimen>
+    <dimen name="height_coordinator_carousel_option">350dp</dimen>
+    <dimen name="height_coordinator_option">300dp</dimen>
 
 
 </resources>

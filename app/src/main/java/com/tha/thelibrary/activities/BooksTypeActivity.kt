@@ -33,6 +33,6 @@ class BooksTypeActivity : BaseActivity(), ChildRecyclerDelegate {
     }
 
     override fun onTapOptionMenu() {
-        showBottomSheet(bookTypeBottomSheet)
+        showBottomSheet(this, R.layout.option_menu_book_sheet)
     }
 }

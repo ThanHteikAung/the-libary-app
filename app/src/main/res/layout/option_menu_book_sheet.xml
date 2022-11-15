@@ -3,22 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="?attr/bottomSheetStyle"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:behavior_hideable="false"
-    app:behavior_peekHeight="@dimen/margin_small_n"
-    app:layout_behavior="@string/bottom_sheet_behavior">
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:background="@color/colorSecondaryTransparency" />
+    android:layout_height="wrap_content">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorOption"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:layout_marginTop="380dp">
+        android:layout_height="@dimen/height_coordinator_option"
+        android:background="@android:color/white">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -65,8 +56,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="@color/white"
+            android:orientation="vertical"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <LinearLayout

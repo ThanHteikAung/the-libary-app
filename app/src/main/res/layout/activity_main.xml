@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/homeActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
@@ -63,6 +63,7 @@
 
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigate"
             android:layout_width="match_parent"
@@ -70,12 +71,7 @@
             android:layout_alignParentBottom="true"
             app:itemIconTint="@color/bnv_tab_item_foreground"
             app:itemTextColor="@color/bnv_tab_item_foreground"
-            app:menu="@menu/bottom_navigation_menu"/>
+            app:menu="@menu/bottom_navigation_menu" />
     </RelativeLayout>
-    <include
-        android:id="@+id/bottomSheet"
-        layout="@layout/option_menu_book_sheet"/>
-    <include
-        android:id="@+id/carouselBottomSheet"
-        layout="@layout/carousel_menu_book_sheet"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

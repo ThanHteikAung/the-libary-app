@@ -2,21 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:behavior_hideable="false"
-    app:behavior_peekHeight="@dimen/margin_small_n"
-    app:layout_behavior="@string/bottom_sheet_behavior">
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="400dp"
-        android:background="@color/colorSecondaryTransparency" />
+    android:layout_height="wrap_content">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/coordinatorOption"
+        android:id="@+id/coordinatorCarouselOption"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="330dp">
+        android:layout_height="@dimen/height_coordinator_carousel_option">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -170,7 +161,6 @@
                     android:text="Mark as Read"
                     android:textStyle="bold" />
             </LinearLayout>
-
         </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
