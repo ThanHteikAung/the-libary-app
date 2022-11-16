@@ -1,13 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.LibraryFragment">
 
-    <TextView
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tbLibraryGeneric"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicator="@drawable/tab_indicator_customize"
+        app:tabIndicatorColor="@color/colorSecondary"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="@dimen/margin_small"
+        app:tabSelectedTextColor="@color/colorSecondary"
+        app:tabTextColor="@color/colorPrimary" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChip"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_xxlarge"
+        android:layout_below="@id/tbLibraryGeneric"
+        android:layout_marginTop="@dimen/margin_medium" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnViewAs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rvChip"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="@dimen/margin_medium_3"
+        android:background="@color/white"
+        android:src="@drawable/ic_baseline_view_list_black_24dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLibraryYourBook"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Library Fragment" />
+        android:layout_below="@id/btnViewAs"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:clipToPadding="false"
+        android:paddingEnd="@dimen/margin_medium_2" />
 
-</FrameLayout>
+</RelativeLayout>

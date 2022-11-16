@@ -13,5 +13,6 @@
     <string name="txt_download">Download</string>
     <string name="txt_delete">Delete from you library</string>
     <string name="txt_shelves">Add to shelves</string>
+    <string name="txt_chip_name">Audiobooks | Ebooks</string>
 
 </resources>

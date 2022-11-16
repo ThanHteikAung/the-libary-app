@@ -11,26 +11,36 @@ import com.tha.thelibrary.view.viewholders.ChildRecyclerViewHolder
 class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate) :
     RecyclerView.Adapter<ChildRecyclerViewHolder>() {
     companion object {
-        const val ACTIVITY_NAME = "BOOKSTYPEACTIVITY"
+        const val BOOK_TYPE_ACTIVITY_NAME = "BOOKSTYPEACTIVITY"
+        const val LIBRARY_FRAGMENT_NAME = "LIBRARYFRAGMENT"
+
     }
 
     private lateinit var mActivityName: String
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChildRecyclerViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.view_holder_child_item, parent, false)
-        mActivityName = parent.context.toString()     //getActivityName
+        mActivityName = mDelegate.toString()     //getActivityName or fragmentName
         return ChildRecyclerViewHolder(view, mDelegate)
     }
 
     override fun onBindViewHolder(holder: ChildRecyclerViewHolder, position: Int) {
 
         //check Activity Name
-        if (mActivityName.contains(ACTIVITY_NAME, ignoreCase = true)) {
-            holder.mChildLayout.layoutParams.width = TableLayout.LayoutParams.MATCH_PARENT
-            holder.mImageView.layoutParams.height = 800
-            holder.mImageView.layoutParams.width = TableLayout.LayoutParams.MATCH_PARENT
+        //height value by pixel(not dp)
+        if (mActivityName.contains(BOOK_TYPE_ACTIVITY_NAME, ignoreCase = true)) {
+            setUpResizeViewHolder(holder)
+        } else if (mActivityName.contains(LIBRARY_FRAGMENT_NAME, ignoreCase = true)) {
+            setUpResizeViewHolder(holder)
         }
 
+    }
+
+    //Resize width/height of ViewHolder
+    private fun setUpResizeViewHolder(holder: ChildRecyclerViewHolder) {
+        holder.mChildLayout.layoutParams.width = TableLayout.LayoutParams.MATCH_PARENT
+        holder.mImageView.layoutParams.height = 800
+        holder.mImageView.layoutParams.width = TableLayout.LayoutParams.MATCH_PARENT
     }
 
     override fun getItemCount(): Int {

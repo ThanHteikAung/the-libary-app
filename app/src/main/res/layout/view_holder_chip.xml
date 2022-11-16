@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_rounded_chip"
+        android:gravity="center"
+        android:text="@string/txt_chip_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_regular_2x"
+        android:padding="@dimen/margin_medium"
+        android:layout_marginLeft="@dimen/margin_medium_3"/>
+
+</RelativeLayout>

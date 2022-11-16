@@ -38,4 +38,5 @@ class MainActivity : BaseActivity() {
             .replace(R.id.mainFrameLayout, fragment)
             .commit()
     }
+
 }
