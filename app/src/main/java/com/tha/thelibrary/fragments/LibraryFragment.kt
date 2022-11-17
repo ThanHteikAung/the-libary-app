@@ -7,16 +7,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tha.thelibrary.R
-import com.tha.thelibrary.activities.TestingViewAsActivity
 import com.tha.thelibrary.adapters.ChildRecyclerAdapter
 import com.tha.thelibrary.adapters.ChipAdapter
+import com.tha.thelibrary.adapters.ListAdapter
 import com.tha.thelibrary.delegates.ChildRecyclerDelegate
+import com.tha.thelibrary.delegates.ViewAsDelegate
 import kotlinx.android.synthetic.main.fragment_library.*
 
-class LibraryFragment : BaseFragment(), ChildRecyclerDelegate {
+class LibraryFragment : BaseFragment(), ChildRecyclerDelegate, ViewAsDelegate {
 
     private lateinit var mChipAdapter: ChipAdapter
     private lateinit var mLibraryYourBooksAdapter: ChildRecyclerAdapter
+    private lateinit var mViewAsFragment: ViewAsFragment
+    private lateinit var mListAdapter: ListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +33,9 @@ class LibraryFragment : BaseFragment(), ChildRecyclerDelegate {
         super.onViewCreated(view, savedInstanceState)
         setUpLibraryTabLayout()
         setUpChipRecyclerView()
-        setUpLibraryYourBooksRecycler()
+        setUpLibraryListGridRecycler()
+        setUpLibrary2GridRecycler()
+        setUpLibrary3GridRecycler()
         setUpButtonViewAs()
     }
 
@@ -53,12 +58,29 @@ class LibraryFragment : BaseFragment(), ChildRecyclerDelegate {
     }
 
     //setup Library navigation's your books tab
-    private fun setUpLibraryYourBooksRecycler() {
+    private fun setUpLibrary2GridRecycler() {
         mLibraryYourBooksAdapter = ChildRecyclerAdapter(this)
-        rvLibraryYourBook.adapter = mLibraryYourBooksAdapter
-        rvLibraryYourBook.layoutManager =
+        rvLibrary2Grid.adapter = mLibraryYourBooksAdapter
+        rvLibrary2Grid.layoutManager =
             GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+        rvLibrary2Grid.visibility = View.GONE
     }
+
+    private fun setUpLibrary3GridRecycler() {
+        mLibraryYourBooksAdapter = ChildRecyclerAdapter(this)
+        rvLibrary3Grid.adapter = mLibraryYourBooksAdapter
+        rvLibrary3Grid.layoutManager =
+            GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
+        rvLibrary3Grid.visibility = View.GONE
+    }
+
+    private fun setUpLibraryListGridRecycler() {
+        mListAdapter = ListAdapter()
+        rvLibraryList.adapter = mListAdapter
+        rvLibraryList.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+    }
+
 
     override fun onTapOptionMenu() {
         context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
@@ -66,12 +88,28 @@ class LibraryFragment : BaseFragment(), ChildRecyclerDelegate {
 
     private fun setUpButtonViewAs() {
         btnViewAs.setOnClickListener {
-            setUpViewAs()
+            mViewAsFragment = ViewAsFragment()
+            mViewAsFragment.show(childFragmentManager, null)
+            mViewAsFragment.setUpDelegate(this)
         }
     }
 
-    private fun setUpViewAs() {
-        startActivity(context?.let { TestingViewAsActivity.newIntent(it) })
+    override fun onTapList() {
+        rvLibraryList.visibility = View.VISIBLE
+        rvLibrary2Grid.visibility = View.GONE
+        rvLibrary3Grid.visibility = View.GONE
+    }
+
+    override fun onTapSmallGrid() {
+        rvLibraryList.visibility = View.GONE
+        rvLibrary2Grid.visibility = View.GONE
+        rvLibrary3Grid.visibility = View.VISIBLE
+    }
+
+    override fun onTapLargeGrid() {
+        rvLibraryList.visibility = View.GONE
+        rvLibrary3Grid.visibility = View.GONE
+        rvLibrary2Grid.visibility = View.VISIBLE
     }
 
 }

@@ -35,12 +35,33 @@
         android:src="@drawable/ic_baseline_view_list_black_24dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLibraryYourBook"
+        android:id="@+id/rvLibrary2Grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/btnViewAs"
         android:layout_marginTop="@dimen/margin_medium"
         android:clipToPadding="false"
         android:paddingEnd="@dimen/margin_medium_2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLibrary3Grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnViewAs"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:clipToPadding="false"
+        android:paddingEnd="@dimen/margin_medium_2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLibraryList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnViewAs"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/margin_medium_2" />
+
 
 </RelativeLayout>

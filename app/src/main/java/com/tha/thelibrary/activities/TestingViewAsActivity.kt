@@ -3,9 +3,15 @@ package com.tha.thelibrary.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.tha.thelibrary.R
+import com.tha.thelibrary.adapters.ChildRecyclerAdapter
+import com.tha.thelibrary.delegates.ViewAsDelegate
 
 class TestingViewAsActivity : BaseActivity() {
+
+    private lateinit var mChildRecyclerAdapter: ChildRecyclerAdapter
+    private lateinit var mDelegate: ViewAsDelegate
 
     companion object {
         private lateinit var mContext: Context
@@ -21,9 +27,20 @@ class TestingViewAsActivity : BaseActivity() {
         finish()
     }
 
+    private fun setUpDelegate(delegate: ViewAsDelegate) {
+        mDelegate = delegate
+    }
+
     // Get the selected radio button text using radio button on click listener
-    fun radio_button_click() {
-        // Get the clicked radio button instance
-        println("Radio Button Testing")
+    fun onRadioBtnList(view: View) {
+        mDelegate.onTapList()
+    }
+
+    fun onRadioBtnSmallGrid(view: View) {
+        mDelegate.onTapSmallGrid()
+    }
+
+    fun onRadioBtnLargeGrid(view: View) {
+        mDelegate.onTapLargeGrid()
     }
 }

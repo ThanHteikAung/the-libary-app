@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivList"
+        android:layout_width="60dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:scaleType="centerCrop"
+        android:src="@drawable/book_img2"
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvListTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/ivList"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_toEndOf="@id/ivList"
+        android:text="@string/txt_list_title"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvListAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvListTitle"
+        android:layout_alignStart="@id/tvListTitle"
+        android:text="@string/txt_list_author_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_regular_2x" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvListBookName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvListAuthor"
+        android:layout_alignStart="@id/tvListTitle"
+        android:text="Ebook . Sample"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_regular_2x" />
+
+    <ImageView
+        android:id="@+id/ivListDownload"
+        android:layout_width="@dimen/width_inner_item"
+        android:layout_height="@dimen/height_inner_item"
+        android:layout_alignTop="@id/tvListTitle"
+        android:layout_toStartOf="@id/ivListOptionMenu"
+        android:src="@drawable/ic_baseline_download_done_24"
+        android:layout_marginEnd="@dimen/margin_xxlarge"/>
+
+    <ImageView
+        android:id="@+id/ivListOptionMenu"
+        android:layout_width="@dimen/width_inner_item"
+        android:layout_height="@dimen/height_inner_item"
+        android:layout_alignTop="@id/tvListTitle"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_baseline_more_horiz_24" />
+</RelativeLayout>

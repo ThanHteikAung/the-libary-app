@@ -1,5 +1,6 @@
 package com.tha.thelibrary.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TableLayout
@@ -7,9 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tha.thelibrary.R
 import com.tha.thelibrary.delegates.ChildRecyclerDelegate
 import com.tha.thelibrary.view.viewholders.ChildRecyclerViewHolder
+import kotlinx.android.synthetic.main.fragment_library.view.*
 
 class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate) :
     RecyclerView.Adapter<ChildRecyclerViewHolder>() {
+
+    private var mRadioBtnId: Int = 2
+
     companion object {
         const val BOOK_TYPE_ACTIVITY_NAME = "BOOKSTYPEACTIVITY"
         const val LIBRARY_FRAGMENT_NAME = "LIBRARYFRAGMENT"
@@ -33,7 +38,6 @@ class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate) :
         } else if (mActivityName.contains(LIBRARY_FRAGMENT_NAME, ignoreCase = true)) {
             setUpResizeViewHolder(holder)
         }
-
     }
 
     //Resize width/height of ViewHolder
@@ -45,5 +49,11 @@ class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate) :
 
     override fun getItemCount(): Int {
         return 7
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setNewData(radioBtnId: Int) {
+        mRadioBtnId = radioBtnId
+        notifyDataSetChanged()
     }
 }
