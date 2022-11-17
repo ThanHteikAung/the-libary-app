@@ -16,7 +16,7 @@ class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate) :
     private var mRadioBtnId: Int = 2
 
     companion object {
-        const val BOOK_TYPE_ACTIVITY_NAME = "BOOKSTYPEACTIVITY"
+        const val BOOK_TYPE_ACTIVITY_NAME = "BOOKSTYPEPRESENTERIMPL"
         const val LIBRARY_FRAGMENT_NAME = "LIBRARYFRAGMENT"
 
     }

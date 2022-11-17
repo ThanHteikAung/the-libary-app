@@ -39,22 +39,24 @@
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <RadioButton
-                android:id="@+id/list"
+                android:id="@+id/radioBtnList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="radio_button_click"
-                android:text="List" />
+                android:onClick="onRadioBtnList"
+                android:text="List"/>
 
             <RadioButton
-                android:id="@+id/green"
+                android:id="@+id/radioBtnLargeGrid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onRadioBtnLargeGrid"
                 android:text="Large grid" />
 
             <RadioButton
-                android:id="@+id/yellow"
+                android:id="@+id/radioBtnSmallGrid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onRadioBtnSmallGrid"
                 android:text="Small grid" />
 
         </RadioGroup>
