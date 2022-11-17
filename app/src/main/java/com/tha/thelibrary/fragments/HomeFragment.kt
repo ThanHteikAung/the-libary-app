@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
@@ -13,18 +14,18 @@ import com.tha.thelibrary.R
 import com.tha.thelibrary.activities.BooksTypeActivity
 import com.tha.thelibrary.adapters.CarouselAdapter
 import com.tha.thelibrary.adapters.ParentRecyclerAdapter
-import com.tha.thelibrary.delegates.CarouselDelegate
-import com.tha.thelibrary.delegates.ChildRecyclerDelegate
-import com.tha.thelibrary.delegates.ParentRecyclerDelegate
+import com.tha.thelibrary.mvp.presenters.HomePresenter
+import com.tha.thelibrary.mvp.presenters.HomePresenterImpl
+import com.tha.thelibrary.mvp.views.HomeView
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlin.math.abs
 
-class HomeFragment : BaseFragment(), ParentRecyclerDelegate, ChildRecyclerDelegate,
-    CarouselDelegate {
+class HomeFragment : BaseFragment(), HomeView {
 
     private lateinit var mCarouselAdapter: CarouselAdapter
     private lateinit var mOuterRecyclerAdapter: ParentRecyclerAdapter
 
+    private lateinit var mPresenter: HomePresenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,15 +37,21 @@ class HomeFragment : BaseFragment(), ParentRecyclerDelegate, ChildRecyclerDelega
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpPresenter()
         setUpCarouselViewPager()
         setUpTabLayout()
         setUpParentRecycler()
         setUpTabLayoutListener()
     }
 
+    private fun setUpPresenter() {
+        mPresenter = ViewModelProvider(this)[HomePresenterImpl::class.java]
+        mPresenter.initView(this)
+    }
+
     //Setup Carousel
     private fun setUpCarouselViewPager() {
-        mCarouselAdapter = CarouselAdapter(this)
+        mCarouselAdapter = CarouselAdapter(mPresenter)
         vpCarousel.adapter = mCarouselAdapter
         vpCarousel.clipToPadding = false
         vpCarousel.clipChildren = false
@@ -76,7 +83,7 @@ class HomeFragment : BaseFragment(), ParentRecyclerDelegate, ChildRecyclerDelega
 
     //setup outer recycler view
     private fun setUpParentRecycler() {
-        mOuterRecyclerAdapter = ParentRecyclerAdapter(this, this)
+        mOuterRecyclerAdapter = ParentRecyclerAdapter(mPresenter, mPresenter)
         rvParentRecycler.adapter = mOuterRecyclerAdapter
         rvParentRecycler.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -107,16 +114,16 @@ class HomeFragment : BaseFragment(), ParentRecyclerDelegate, ChildRecyclerDelega
         })
     }
 
-    override fun onTapCarouselOptionMenu() {
+    override fun showCarouselOptionMenu() {
         context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
     }
 
-    override fun onTapOptionMenu() {
-        context?.let { showBottomSheet(it, R.layout.option_menu_book_sheet) }
+    override fun showEbooksCategory() {
+        startActivity(context?.let { BooksTypeActivity.newIntent(it) })
     }
 
-    override fun onTapParentRecyclerHeader() {
-        startActivity(context?.let { BooksTypeActivity.newIntent(it) })
+    override fun showEbooksOptionMenu() {
+        context?.let { showBottomSheet(it, R.layout.option_menu_book_sheet) }
     }
 
 }
