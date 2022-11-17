@@ -4,22 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tha.thelibrary.R
 import com.tha.thelibrary.adapters.ChildRecyclerAdapter
 import com.tha.thelibrary.adapters.ChipAdapter
 import com.tha.thelibrary.adapters.ListAdapter
-import com.tha.thelibrary.delegates.ChildRecyclerDelegate
-import com.tha.thelibrary.delegates.ViewAsDelegate
+import com.tha.thelibrary.mvp.presenters.LibraryPresenter
+import com.tha.thelibrary.mvp.presenters.LibraryPresenterImpl
+import com.tha.thelibrary.mvp.views.LibraryView
 import kotlinx.android.synthetic.main.fragment_library.*
 
-class LibraryFragment : BaseFragment(), ChildRecyclerDelegate, ViewAsDelegate {
+class LibraryFragment : BaseFragment(), LibraryView {
 
     private lateinit var mChipAdapter: ChipAdapter
     private lateinit var mLibraryYourBooksAdapter: ChildRecyclerAdapter
     private lateinit var mViewAsFragment: ViewAsFragment
     private lateinit var mListAdapter: ListAdapter
+
+    private lateinit var mPresenter: LibraryPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,12 +35,18 @@ class LibraryFragment : BaseFragment(), ChildRecyclerDelegate, ViewAsDelegate {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpPresenter()
         setUpLibraryTabLayout()
         setUpChipRecyclerView()
         setUpLibraryListGridRecycler()
         setUpLibrary2GridRecycler()
         setUpLibrary3GridRecycler()
         setUpButtonViewAs()
+    }
+
+    private fun setUpPresenter() {
+        mPresenter = ViewModelProvider(this)[LibraryPresenterImpl::class.java]
+        mPresenter.initView(this)
     }
 
     //setup Library TabLayout
@@ -59,7 +69,7 @@ class LibraryFragment : BaseFragment(), ChildRecyclerDelegate, ViewAsDelegate {
 
     //setup Library navigation's your books tab
     private fun setUpLibrary2GridRecycler() {
-        mLibraryYourBooksAdapter = ChildRecyclerAdapter(this)
+        mLibraryYourBooksAdapter = ChildRecyclerAdapter(mPresenter)
         rvLibrary2Grid.adapter = mLibraryYourBooksAdapter
         rvLibrary2Grid.layoutManager =
             GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
@@ -67,7 +77,7 @@ class LibraryFragment : BaseFragment(), ChildRecyclerDelegate, ViewAsDelegate {
     }
 
     private fun setUpLibrary3GridRecycler() {
-        mLibraryYourBooksAdapter = ChildRecyclerAdapter(this)
+        mLibraryYourBooksAdapter = ChildRecyclerAdapter(mPresenter)
         rvLibrary3Grid.adapter = mLibraryYourBooksAdapter
         rvLibrary3Grid.layoutManager =
             GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
@@ -81,32 +91,31 @@ class LibraryFragment : BaseFragment(), ChildRecyclerDelegate, ViewAsDelegate {
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
-
-    override fun onTapOptionMenu() {
-        context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
-    }
-
     private fun setUpButtonViewAs() {
         btnViewAs.setOnClickListener {
             mViewAsFragment = ViewAsFragment()
             mViewAsFragment.show(childFragmentManager, null)
-            mViewAsFragment.setUpDelegate(this)
+            mViewAsFragment.setUpDelegate(mPresenter)
         }
     }
 
-    override fun onTapList() {
+    override fun showCarouselOptionMenu() {
+        context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
+    }
+
+    override fun showViewByList() {
         rvLibraryList.visibility = View.VISIBLE
         rvLibrary2Grid.visibility = View.GONE
         rvLibrary3Grid.visibility = View.GONE
     }
 
-    override fun onTapSmallGrid() {
+    override fun showViewBySmallGrid() {
         rvLibraryList.visibility = View.GONE
         rvLibrary2Grid.visibility = View.GONE
         rvLibrary3Grid.visibility = View.VISIBLE
     }
 
-    override fun onTapLargeGrid() {
+    override fun showViewByLargeGrid() {
         rvLibraryList.visibility = View.GONE
         rvLibrary3Grid.visibility = View.GONE
         rvLibrary2Grid.visibility = View.VISIBLE
