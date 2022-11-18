@@ -10,7 +10,7 @@ import com.tha.thelibrary.delegates.ChildRecyclerDelegate
 import com.tha.thelibrary.view.viewholders.ChildRecyclerViewHolder
 import kotlinx.android.synthetic.main.fragment_library.view.*
 
-class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate) :
+class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate?) :
     RecyclerView.Adapter<ChildRecyclerViewHolder>() {
 
     private var mRadioBtnId: Int = 2
