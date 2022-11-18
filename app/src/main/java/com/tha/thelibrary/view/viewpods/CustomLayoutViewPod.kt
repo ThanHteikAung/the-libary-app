@@ -9,20 +9,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tha.thelibrary.adapters.ChildRecyclerAdapter
 import com.tha.thelibrary.adapters.ChipAdapter
 import com.tha.thelibrary.adapters.ListAdapter
-import com.tha.thelibrary.delegates.ViewAsDelegate
-import com.tha.thelibrary.fragments.ViewAsFragment
 import com.tha.thelibrary.mvp.presenters.LibraryPresenter
 import kotlinx.android.synthetic.main.view_pod_custom_layout.view.*
 
 class CustomLayoutViewPod @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : RelativeLayout(context, attrs){
+) : RelativeLayout(context, attrs) {
 
     private lateinit var mChipAdapter: ChipAdapter
     private lateinit var mLibraryYourBooksAdapter: ChildRecyclerAdapter
     private lateinit var mListAdapter: ListAdapter
     private lateinit var mLibraryPresenter: LibraryPresenter
-    private var mDelegate : Delegate? = null
+    private var mDelegate: Delegate? = null
 
 
     override fun onFinishInflate() {
@@ -65,21 +63,25 @@ class CustomLayoutViewPod @JvmOverloads constructor(
     }
 
     private fun setUpLibraryListGridRecycler() {
-        mListAdapter = ListAdapter()
+        mListAdapter = ListAdapter(mLibraryPresenter)
         rvLibraryList.adapter = mListAdapter
         rvLibraryList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
-    private fun setUpListener(){
+    private fun setUpListener() {
         btnViewAs.setOnClickListener {
             mDelegate?.onTapViewAs()
 
         }
+        btnSortBy.setOnClickListener {
+            mDelegate?.onTapSortBy()
+        }
     }
 
-    interface Delegate{
+    interface Delegate {
         fun onTapViewAs()
+        fun onTapSortBy()
     }
 
     fun onTapList() {

@@ -12,11 +12,19 @@ class LibraryPresenterImpl: ViewModel(), LibraryPresenter {
     }
 
     override fun onTapOptionMenu() {
+        mView.showListOptionMenu()
+    }
+
+    override fun onTapListOptionMenu() {
         mView.showCarouselOptionMenu()
     }
 
     override fun onTapViewAs() {
-        mView.showRadioOptionMenu()
+        mView.showViewAsRadioOptionMenu()
+    }
+
+    override fun onTapSortBy() {
+        mView.showSortByRadioOptionMenu()
     }
 
     override fun onTapList() {

@@ -3,8 +3,10 @@ package com.tha.thelibrary.mvp.views
 interface LibraryView {
 
     fun showCarouselOptionMenu()
-    fun showRadioOptionMenu()
+    fun showViewAsRadioOptionMenu()
     fun showList()
     fun showSmallGrid()
     fun showLargeGrid()
+    fun showListOptionMenu()
+    fun showSortByRadioOptionMenu()
 }

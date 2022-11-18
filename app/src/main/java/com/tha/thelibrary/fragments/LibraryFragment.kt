@@ -17,6 +17,7 @@ class LibraryFragment : BaseFragment(), LibraryView {
     private lateinit var mPresenter: LibraryPresenter
     private lateinit var mCustomLayoutViewPod: CustomLayoutViewPod
     private lateinit var mViewAsFragment: ViewAsFragment
+    private lateinit var mSortByFragment: SortByFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +60,7 @@ class LibraryFragment : BaseFragment(), LibraryView {
         context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
     }
 
-    override fun showRadioOptionMenu() {
+    override fun showViewAsRadioOptionMenu() {
         mViewAsFragment = ViewAsFragment()
         mViewAsFragment.show(childFragmentManager, null)
         mViewAsFragment.setUpDelegate(mPresenter)
@@ -75,6 +76,15 @@ class LibraryFragment : BaseFragment(), LibraryView {
 
     override fun showLargeGrid() {
         mCustomLayoutViewPod.onTapLargeGrid()
+    }
+
+    override fun showListOptionMenu() {
+        context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
+    }
+
+    override fun showSortByRadioOptionMenu() {
+        mSortByFragment = SortByFragment()
+        mSortByFragment.show(childFragmentManager, null)
     }
 
 
