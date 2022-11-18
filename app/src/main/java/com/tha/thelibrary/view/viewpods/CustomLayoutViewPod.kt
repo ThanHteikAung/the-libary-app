@@ -4,44 +4,40 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tha.thelibrary.adapters.ChildRecyclerAdapter
 import com.tha.thelibrary.adapters.ChipAdapter
 import com.tha.thelibrary.adapters.ListAdapter
 import com.tha.thelibrary.delegates.ViewAsDelegate
-import com.tha.thelibrary.fragments.BaseFragment
 import com.tha.thelibrary.fragments.ViewAsFragment
 import com.tha.thelibrary.mvp.presenters.LibraryPresenter
 import kotlinx.android.synthetic.main.view_pod_custom_layout.view.*
 
 class CustomLayoutViewPod @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : RelativeLayout(context, attrs), ViewAsDelegate {
+) : RelativeLayout(context, attrs){
 
     private lateinit var mChipAdapter: ChipAdapter
     private lateinit var mLibraryYourBooksAdapter: ChildRecyclerAdapter
-    private lateinit var mViewAsFragment: ViewAsFragment
     private lateinit var mListAdapter: ListAdapter
+    private lateinit var mLibraryPresenter: LibraryPresenter
+    private var mDelegate : Delegate? = null
 
-    private lateinit var mViewAsDelegate: ViewAsDelegate
-    private lateinit var mChildFragmentManager: FragmentTransaction
-    private var mLibraryPresenter: LibraryPresenter? = null
 
     override fun onFinishInflate() {
         super.onFinishInflate()
+        setUpListener()
         setUpChipRecyclerView()
+    }
+
+    fun setUpDelegate(delegate: LibraryPresenter) {
+        mLibraryPresenter = delegate
+        mDelegate = delegate
         setUpLibraryListGridRecycler()
         setUpLibrary2GridRecycler()
         setUpLibrary3GridRecycler()
-        setUpListener()
-    }
 
-    fun setUpDelegate(
-        libraryPresenter: LibraryPresenter,
-    ) {
-        mLibraryPresenter = libraryPresenter
     }
 
     //setup Chip Recycler View
@@ -75,27 +71,30 @@ class CustomLayoutViewPod @JvmOverloads constructor(
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
-    private fun setUpListener() {
+    private fun setUpListener(){
         btnViewAs.setOnClickListener {
-            mViewAsFragment = ViewAsFragment()
-            mViewAsFragment.show(mChildFragmentManager, null)
-            mViewAsFragment.setUpDelegate(mViewAsDelegate)
+            mDelegate?.onTapViewAs()
+
         }
     }
 
-    override fun onTapList() {
+    interface Delegate{
+        fun onTapViewAs()
+    }
+
+    fun onTapList() {
         rvLibraryList.visibility = View.VISIBLE
         rvLibrary2Grid.visibility = View.GONE
         rvLibrary3Grid.visibility = View.GONE
     }
 
-    override fun onTapSmallGrid() {
+    fun onTapSmallGrid() {
         rvLibraryList.visibility = View.GONE
         rvLibrary2Grid.visibility = View.GONE
         rvLibrary3Grid.visibility = View.VISIBLE
     }
 
-    override fun onTapLargeGrid() {
+    fun onTapLargeGrid() {
         rvLibraryList.visibility = View.GONE
         rvLibrary3Grid.visibility = View.GONE
         rvLibrary2Grid.visibility = View.VISIBLE

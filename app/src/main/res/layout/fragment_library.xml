@@ -18,9 +18,11 @@
         app:tabTextColor="@color/colorPrimary" />
 
     <include
-        layout="@layout/view_pod_custom_layout"
+        android:id="@+id/includeCustomYourBooks"
+        android:layout_below="@id/tbLibraryGeneric"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tbLibraryGeneric" />
+        layout="@layout/view_pod_custom_layout"/>
+
 
 </RelativeLayout>

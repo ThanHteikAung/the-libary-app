@@ -17,7 +17,7 @@ class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate?) :
 
     companion object {
         const val BOOK_TYPE_ACTIVITY_NAME = "BOOKSTYPEPRESENTERIMPL"
-        const val LIBRARY_FRAGMENT_NAME = "LIBRARYFRAGMENT"
+        const val LIBRARY_FRAGMENT_NAME = "LIBRARYPRESENTERIMPL"
 
     }
 

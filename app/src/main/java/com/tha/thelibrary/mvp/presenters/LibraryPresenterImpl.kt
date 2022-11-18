@@ -15,19 +15,19 @@ class LibraryPresenterImpl: ViewModel(), LibraryPresenter {
         mView.showCarouselOptionMenu()
     }
 
-    /*override fun onTapList() {
-        mView.showViewByList()
+    override fun onTapViewAs() {
+        mView.showRadioOptionMenu()
+    }
+
+    override fun onTapList() {
+        mView.showList()
     }
 
     override fun onTapSmallGrid() {
-        mView.showViewBySmallGrid()
+        mView.showSmallGrid()
     }
 
     override fun onTapLargeGrid() {
-        mView.showViewByLargeGrid()
-    }*/
-
-    override fun onTapViewAs() {
-        mView.showCustomLayoutGroup()
+        mView.showLargeGrid()
     }
 }
