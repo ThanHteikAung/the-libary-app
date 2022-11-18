@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tha.thelibrary.view.viewpods.CustomLayoutViewPod xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChip"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_xxlarge"
+        android:layout_below="@id/tbLibraryGeneric"
+        android:layout_marginTop="@dimen/margin_medium" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnViewAs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rvChip"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="@dimen/margin_medium_3"
+        android:background="@color/white"
+        android:src="@drawable/ic_baseline_view_list_black_24dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLibrary2Grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnViewAs"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:clipToPadding="false"
+        android:paddingEnd="@dimen/margin_medium_2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLibrary3Grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnViewAs"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:clipToPadding="false"
+        android:paddingEnd="@dimen/margin_medium_2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLibraryList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnViewAs"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/margin_medium_2" />
+
+</com.tha.thelibrary.view.viewpods.CustomLayoutViewPod>

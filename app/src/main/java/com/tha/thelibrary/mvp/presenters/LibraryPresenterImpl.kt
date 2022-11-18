@@ -15,7 +15,7 @@ class LibraryPresenterImpl: ViewModel(), LibraryPresenter {
         mView.showCarouselOptionMenu()
     }
 
-    override fun onTapList() {
+    /*override fun onTapList() {
         mView.showViewByList()
     }
 
@@ -25,5 +25,9 @@ class LibraryPresenterImpl: ViewModel(), LibraryPresenter {
 
     override fun onTapLargeGrid() {
         mView.showViewByLargeGrid()
+    }*/
+
+    override fun onTapViewAs() {
+        mView.showCustomLayoutGroup()
     }
 }
