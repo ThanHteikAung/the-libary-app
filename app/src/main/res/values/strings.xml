@@ -20,5 +20,7 @@
     <string name="txt_list_author_name">Julie Zhuo</string>
     <string name="txt_create_new">Create new</string>
     <string name="text_no_shelves">Create shelves to match the way you think</string>
+    <string name="txt_create_shelf">Create shelf</string>
+    <string name="txt_shelf_name">Shelf name</string>
 
 </resources>

@@ -10,4 +10,6 @@
     <color name="blackTransparent">#A1000000</color>
     <color name="colorSecondaryTransparency">#4D33354E</color>
     <color name="shelvesColor">#007AC9</color>
+    <color name="tabIndicatorColor">#3C7EC7</color>
+    <color name="straightLineColor">#F1F2F3</color>
 </resources>
