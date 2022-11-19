@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tha.thelibrary.adapters.ChildRecyclerAdapter
 import com.tha.thelibrary.adapters.ChipAdapter
 import com.tha.thelibrary.adapters.ListAdapter
-import com.tha.thelibrary.mvp.presenters.LibraryPresenter
+import com.tha.thelibrary.mvp.presenters.YourBooksPresenter
 import kotlinx.android.synthetic.main.view_pod_custom_layout.view.*
 
 class CustomLayoutViewPod @JvmOverloads constructor(
@@ -19,7 +19,7 @@ class CustomLayoutViewPod @JvmOverloads constructor(
     private lateinit var mChipAdapter: ChipAdapter
     private lateinit var mLibraryYourBooksAdapter: ChildRecyclerAdapter
     private lateinit var mListAdapter: ListAdapter
-    private lateinit var mLibraryPresenter: LibraryPresenter
+    private lateinit var mLibraryPresenter: YourBooksPresenter
     private var mDelegate: Delegate? = null
 
 
@@ -29,7 +29,7 @@ class CustomLayoutViewPod @JvmOverloads constructor(
         setUpChipRecyclerView()
     }
 
-    fun setUpDelegate(delegate: LibraryPresenter) {
+    fun setUpDelegate(delegate: YourBooksPresenter) {
         mLibraryPresenter = delegate
         mDelegate = delegate
         setUpLibraryListGridRecycler()

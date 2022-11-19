@@ -1,13 +1,13 @@
 package com.tha.thelibrary.mvp.presenters
 
 import androidx.lifecycle.ViewModel
-import com.tha.thelibrary.mvp.views.LibraryView
+import com.tha.thelibrary.mvp.views.YourBooksView
 
-class LibraryPresenterImpl: ViewModel(), LibraryPresenter {
+class YourBooksPresenterImpl: ViewModel(), YourBooksPresenter {
 
-    private lateinit var mView: LibraryView
+    private lateinit var mView: YourBooksView
 
-    override fun initView(view: LibraryView) {
+    override fun initView(view: YourBooksView) {
         mView = view
     }
 

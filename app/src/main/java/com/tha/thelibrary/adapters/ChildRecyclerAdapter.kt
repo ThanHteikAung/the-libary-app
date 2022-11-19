@@ -18,6 +18,7 @@ class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate?) :
     companion object {
         const val BOOK_TYPE_ACTIVITY_NAME = "BOOKSTYPEPRESENTERIMPL"
         const val LIBRARY_FRAGMENT_NAME = "LIBRARYPRESENTERIMPL"
+        const val YOUR_BOOKS_FRAGMENT_NAME = "YOURBOOKSPRESENTERIMPL"
 
     }
 
@@ -36,6 +37,8 @@ class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate?) :
         if (mActivityName.contains(BOOK_TYPE_ACTIVITY_NAME, ignoreCase = true)) {
             setUpResizeViewHolder(holder)
         } else if (mActivityName.contains(LIBRARY_FRAGMENT_NAME, ignoreCase = true)) {
+            setUpResizeViewHolder(holder)
+        } else if (mActivityName.contains(YOUR_BOOKS_FRAGMENT_NAME, ignoreCase = true)) {
             setUpResizeViewHolder(holder)
         }
     }

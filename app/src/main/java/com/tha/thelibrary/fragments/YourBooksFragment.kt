@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.tha.thelibrary.R
-import com.tha.thelibrary.mvp.presenters.LibraryPresenter
-import com.tha.thelibrary.mvp.presenters.LibraryPresenterImpl
-import com.tha.thelibrary.mvp.views.LibraryView
+import com.tha.thelibrary.mvp.presenters.YourBooksPresenter
+import com.tha.thelibrary.mvp.presenters.YourBooksPresenterImpl
+import com.tha.thelibrary.mvp.views.YourBooksView
 import com.tha.thelibrary.view.viewpods.CustomLayoutViewPod
 import kotlinx.android.synthetic.main.fragment_your_books.*
 
-class YourBooksFragment : BaseFragment(), LibraryView {
+class YourBooksFragment : BaseFragment(), YourBooksView {
 
-    private lateinit var mPresenter: LibraryPresenter
+    private lateinit var mPresenter: YourBooksPresenter
     private lateinit var mCustomLayoutViewPod: CustomLayoutViewPod
     private lateinit var mViewAsFragment: ViewAsFragment
     private lateinit var mSortByFragment: SortByFragment
@@ -34,7 +34,7 @@ class YourBooksFragment : BaseFragment(), LibraryView {
     }
 
     private fun setUpPresenter() {
-        mPresenter = ViewModelProvider(this)[LibraryPresenterImpl::class.java]
+        mPresenter = ViewModelProvider(this)[YourBooksPresenterImpl::class.java]
         mPresenter.initView(this)
     }
 

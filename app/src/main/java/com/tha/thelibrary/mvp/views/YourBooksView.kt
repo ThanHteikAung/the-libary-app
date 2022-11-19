@@ -1,6 +1,6 @@
 package com.tha.thelibrary.mvp.views
 
-interface LibraryView {
+interface YourBooksView {
 
     fun showCarouselOptionMenu()
     fun showViewAsRadioOptionMenu()

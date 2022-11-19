@@ -1,15 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.YourShelvesDetailListActivity">
 
-    <include
-        android:id="@+id/includeCustomYourShelves"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnBack"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:src="@drawable/ic_baseline_keyboard_arrow_left_black_24dp" />
+
+    <ImageView
+        android:id="@+id/ivChildOptionMenu"
+        android:layout_width="@dimen/width_inner_item"
+        android:layout_height="@dimen/height_inner_item"
+        android:layout_alignTop="@id/btnBack"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:src="@drawable/ic_baseline_more_horiz_24" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvYourShelvesTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnBack"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginEnd="@dimen/margin_medium_2"
+        android:text="@string/txt_your_shelves_name"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/txt_header_medium" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtDetailCountBooks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        layout="@layout/view_pod_custom_layout"/>
+        android:layout_below="@id/tvYourShelvesTitle"
+        android:layout_alignStart="@id/tvYourShelvesTitle"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:text="@string/txt_count_books"
+        android:textSize="@dimen/text_regular_3x" />
+
+    <View
+        android:id="@+id/straightLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_straight_line"
+        android:layout_below="@id/txtDetailCountBooks"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:background="@color/straightLineColor" />
+
+    <include
+        android:id="@+id/includeCustomYourShelves"
+        layout="@layout/view_pod_custom_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/straightLine"
+        android:layout_marginTop="@dimen/margin_medium_2" />
 
 </RelativeLayout>

@@ -55,6 +55,8 @@
     <dimen name="height_coordinator_carousel_option">350dp</dimen>
     <dimen name="height_coordinator_option">300dp</dimen>
     <dimen name="height_search_bar">90dp</dimen>
+    <dimen name="txt_header_medium">30sp</dimen>
+    <dimen name="height_straight_line">2dp</dimen>
 
 
 </resources>

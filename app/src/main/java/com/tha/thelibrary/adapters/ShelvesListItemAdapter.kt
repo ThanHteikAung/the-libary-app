@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tha.thelibrary.R
+import com.tha.thelibrary.delegates.ShelvesListItemDelegate
 import com.tha.thelibrary.view.viewholders.ShelvesListItemViewHolder
 
-class ShelvesListItemAdapter : RecyclerView.Adapter<ShelvesListItemViewHolder>() {
+class ShelvesListItemAdapter(private val delegate: ShelvesListItemDelegate) : RecyclerView.Adapter<ShelvesListItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShelvesListItemViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.view_holder_your_shelves_item, parent, false)
-        return ShelvesListItemViewHolder(view)
+        return ShelvesListItemViewHolder(view,delegate)
     }
 
     override fun onBindViewHolder(holder: ShelvesListItemViewHolder, position: Int) {

@@ -23,5 +23,6 @@
     <string name="txt_create_shelf">Create shelf</string>
     <string name="txt_shelf_name">Shelf name</string>
     <string name="txt_your_shelves_name">10 Interaction Design Books to Read</string>
+    <string name="txt_count_books">3 books</string>
 
 </resources>
