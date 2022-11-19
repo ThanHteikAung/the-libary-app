@@ -4,20 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayout
 import com.tha.thelibrary.R
-import com.tha.thelibrary.mvp.presenters.LibraryPresenter
-import com.tha.thelibrary.mvp.presenters.LibraryPresenterImpl
-import com.tha.thelibrary.mvp.views.LibraryView
-import com.tha.thelibrary.view.viewpods.CustomLayoutViewPod
 import kotlinx.android.synthetic.main.fragment_library.*
 
-class LibraryFragment : BaseFragment(), LibraryView {
-
-    private lateinit var mPresenter: LibraryPresenter
-    private lateinit var mCustomLayoutViewPod: CustomLayoutViewPod
-    private lateinit var mViewAsFragment: ViewAsFragment
-    private lateinit var mSortByFragment: SortByFragment
+class LibraryFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,20 +21,9 @@ class LibraryFragment : BaseFragment(), LibraryView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpPresenter()
         setUpLibraryTabLayout()
-        setUpCustomViewPod()
-    }
-
-    private fun setUpPresenter() {
-        mPresenter = ViewModelProvider(this)[LibraryPresenterImpl::class.java]
-        mPresenter.initView(this)
-    }
-
-    //setup CustomViewPod Gp
-    private fun setUpCustomViewPod() {
-        mCustomLayoutViewPod = includeCustomYourBooks as CustomLayoutViewPod
-        mCustomLayoutViewPod.setUpDelegate(mPresenter)
+        setUpListeners()
+        swiftFragment(YourBooksFragment())
     }
 
     //setup Library TabLayout
@@ -54,38 +35,37 @@ class LibraryFragment : BaseFragment(), LibraryView {
                 tbLibraryGeneric.addTab(this)
             }
         }
+
     }
 
-    override fun showCarouselOptionMenu() {
-        context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
+    private fun setUpListeners() {
+        tbLibraryGeneric.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab?.position) {
+                    0 -> {
+                        swiftFragment(YourBooksFragment())
+                    }
+                    1 -> {
+                        swiftFragment(YourShelvesFragment())
+                    }
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+        })
     }
 
-    override fun showViewAsRadioOptionMenu() {
-        mViewAsFragment = ViewAsFragment()
-        mViewAsFragment.show(childFragmentManager, null)
-        mViewAsFragment.setUpDelegate(mPresenter)
+    private fun swiftFragment(fragment: Fragment) {
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.libraryFrameLayout,fragment)
+            .commit()
     }
-
-    override fun showList() {
-        mCustomLayoutViewPod.onTapList()
-    }
-
-    override fun showSmallGrid() {
-        mCustomLayoutViewPod.onTapSmallGrid()
-    }
-
-    override fun showLargeGrid() {
-        mCustomLayoutViewPod.onTapLargeGrid()
-    }
-
-    override fun showListOptionMenu() {
-        context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
-    }
-
-    override fun showSortByRadioOptionMenu() {
-        mSortByFragment = SortByFragment()
-        mSortByFragment.show(childFragmentManager, null)
-    }
-
 
 }
