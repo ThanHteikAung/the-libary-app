@@ -30,7 +30,7 @@ class YourShelvesFragment : Fragment(), ShelvesView {
         super.onViewCreated(view, savedInstanceState)
         setUpPresenter()
         setUpListener()
-        swiftFragment(NoDataShelvesFragment())
+        swiftFragment(ShelvesDataFragment())
     }
 
     private fun setUpPresenter() {
