@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.tha.thelibrary.R
+import com.tha.thelibrary.data.vos.ListVO
 import com.tha.thelibrary.fragments.SortByFragment
 import com.tha.thelibrary.fragments.ViewAsFragment
 import com.tha.thelibrary.mvp.presenters.YourBooksPresenter
@@ -72,6 +73,10 @@ class YourShelvesDetailListActivity : BaseActivity(), YourBooksView {
     override fun showSortByRadioOptionMenu() {
         mSortByFragment = SortByFragment()
         mSortByFragment.show(supportFragmentManager, null)
+    }
+
+    override fun bindData(list: List<ListVO>) {
+
     }
 
 }

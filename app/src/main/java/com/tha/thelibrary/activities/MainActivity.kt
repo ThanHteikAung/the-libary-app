@@ -22,9 +22,9 @@ class MainActivity : BaseActivity(),MainView {
         setContentView(R.layout.activity_main)
 
         setUpPresenter()
-
-        swiftFragment(HomeFragment())
         setUpBottomNavigationListener()
+        swiftFragment(HomeFragment())
+
     }
 
     private fun setUpPresenter(){

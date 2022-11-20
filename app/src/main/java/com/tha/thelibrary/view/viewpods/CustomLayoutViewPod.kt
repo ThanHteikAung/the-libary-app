@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tha.thelibrary.adapters.ChildRecyclerAdapter
 import com.tha.thelibrary.adapters.ChipAdapter
 import com.tha.thelibrary.adapters.ListAdapter
+import com.tha.thelibrary.data.vos.ListVO
 import com.tha.thelibrary.mvp.presenters.YourBooksPresenter
 import kotlinx.android.synthetic.main.view_pod_custom_layout.view.*
 
@@ -21,6 +22,7 @@ class CustomLayoutViewPod @JvmOverloads constructor(
     private lateinit var mListAdapter: ListAdapter
     private lateinit var mLibraryPresenter: YourBooksPresenter
     private var mDelegate: Delegate? = null
+    private var mBooksList: List<ListVO> = listOf()
 
 
     override fun onFinishInflate() {
@@ -101,5 +103,6 @@ class CustomLayoutViewPod @JvmOverloads constructor(
         rvLibrary3Grid.visibility = View.GONE
         rvLibrary2Grid.visibility = View.VISIBLE
     }
+
 
 }

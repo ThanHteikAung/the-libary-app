@@ -1,5 +1,8 @@
 package com.tha.thelibrary.mvp.views
 
+import com.tha.thelibrary.data.vos.BooksVO
+import com.tha.thelibrary.data.vos.ListVO
+
 interface YourBooksView {
 
     fun showCarouselOptionMenu()
@@ -9,4 +12,5 @@ interface YourBooksView {
     fun showLargeGrid()
     fun showListOptionMenu()
     fun showSortByRadioOptionMenu()
+    fun bindData(list: List<BooksVO>)
 }

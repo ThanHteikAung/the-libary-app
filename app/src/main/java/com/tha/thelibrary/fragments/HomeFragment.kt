@@ -14,6 +14,8 @@ import com.tha.thelibrary.R
 import com.tha.thelibrary.activities.BooksTypeActivity
 import com.tha.thelibrary.adapters.CarouselAdapter
 import com.tha.thelibrary.adapters.ParentRecyclerAdapter
+import com.tha.thelibrary.data.vos.BooksVO
+import com.tha.thelibrary.data.vos.ListVO
 import com.tha.thelibrary.mvp.presenters.HomePresenter
 import com.tha.thelibrary.mvp.presenters.HomePresenterImpl
 import com.tha.thelibrary.mvp.views.HomeView
@@ -26,6 +28,8 @@ class HomeFragment : BaseFragment(), HomeView {
     private lateinit var mOuterRecyclerAdapter: ParentRecyclerAdapter
 
     private lateinit var mPresenter: HomePresenter
+    private lateinit var mBindData: List<ListVO>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +46,9 @@ class HomeFragment : BaseFragment(), HomeView {
         setUpTabLayout()
         setUpParentRecycler()
         setUpTabLayoutListener()
+
+        mPresenter.onUiReady(this)
+
     }
 
     private fun setUpPresenter() {
@@ -114,6 +121,11 @@ class HomeFragment : BaseFragment(), HomeView {
         })
     }
 
+    override fun bindData(list: List<ListVO>) {
+        mBindData = list
+        mOuterRecyclerAdapter.setNewData(list)
+    }
+
     override fun showCarouselOptionMenu() {
         context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
     }
@@ -124,6 +136,15 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun showEbooksOptionMenu() {
         context?.let { showBottomSheet(it, R.layout.option_menu_book_sheet) }
+    }
+
+    override fun showSaveBooksList(bookList: List<BooksVO>) {
+        if (bookList.isNotEmpty()){
+            vpCarousel.visibility = View.VISIBLE
+            mCarouselAdapter.setNewData(bookList)
+        }else{
+            vpCarousel.visibility = View.GONE
+        }
     }
 
 }
