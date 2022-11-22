@@ -11,7 +11,6 @@ import com.tha.thelibrary.fragments.LibraryFragment
 import com.tha.thelibrary.mvp.presenters.MainPresenter
 import com.tha.thelibrary.mvp.presenters.MainPresenterImpl
 import com.tha.thelibrary.mvp.views.MainView
-import com.tha.thelibrary.network.dataagents.BookDataAgentImpl
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(),MainView {
