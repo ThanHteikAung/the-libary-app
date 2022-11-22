@@ -1,17 +1,13 @@
 package com.tha.thelibrary.data.models
 
+import androidx.lifecycle.LiveData
 import com.tha.thelibrary.data.vos.ListBookCategoryVO
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 object BookModelImpl : BookModel, BaseModel() {
 
-    override fun getOverview(
-        onSuccess: (List<ListBookCategoryVO>?) -> Unit,
-        onFailure: (String) -> Unit
-    ) {
-        //DataBase
-        onSuccess(mBookDataBase?.listBookCategoryDao()?.getListBookCategory() ?: listOf())
+    override fun getOverview(onFailure: (String) -> Unit): LiveData<List<ListBookCategoryVO>>? {
 
         //Network
         mTheBooksApi?.getOverview()
@@ -21,10 +17,10 @@ object BookModelImpl : BookModel, BaseModel() {
                 it.results?.lists?.let { listBookCategory ->
                     //DataBase insert
                     mBookDataBase?.listBookCategoryDao()?.insertListBookCategory(listBookCategory)
-                    onSuccess(listBookCategory)
                 }
             }, {
                 onFailure(it.localizedMessage ?: "")
             })
+        return mBookDataBase?.listBookCategoryDao()?.getListBookCategory()
     }
 }

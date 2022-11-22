@@ -1,5 +1,6 @@
 package com.tha.thelibrary.persistence.daos
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -17,7 +18,7 @@ interface ListBookCategoryDao {
     fun insertSingleBook(book: BookVO?)
 
     @Query("SELECT * FROM listBookCategory")
-    fun getListBookCategory(): List<ListBookCategoryVO>
+    fun getListBookCategory(): LiveData<List<ListBookCategoryVO>>
 
     @Query("DELETE FROM listBookCategory")
     fun deleteAllListBookCategory()

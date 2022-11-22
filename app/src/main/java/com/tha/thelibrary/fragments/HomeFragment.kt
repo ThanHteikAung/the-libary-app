@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -45,15 +46,16 @@ class HomeFragment : BaseFragment(), HomeView {
         setUpTabLayout()
         setUpParentRecycler()
         setUpTabLayoutListener()
+        requestData()
 
-        mBookModel.getOverview(
-            onSuccess = {
-                mOuterRecyclerAdapter.setNewData(it)
-            },
-            onFailure = {
-                //Error message
-            }
-        )
+    }
+
+    private fun requestData() {
+        mBookModel.getOverview {
+            //Show error message
+        }?.observe(viewLifecycleOwner, Observer {
+            mOuterRecyclerAdapter.setNewData(it)
+        })
     }
 
     private fun setUpPresenter() {
