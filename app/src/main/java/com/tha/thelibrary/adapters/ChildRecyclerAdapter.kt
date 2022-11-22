@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TableLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.tha.thelibrary.R
-import com.tha.thelibrary.data.vos.BooksVO
+import com.tha.thelibrary.data.vos.BookVO
 import com.tha.thelibrary.delegates.ChildRecyclerDelegate
 import com.tha.thelibrary.view.viewholders.ChildRecyclerViewHolder
 import kotlinx.android.synthetic.main.fragment_library.view.*
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_library.view.*
 class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate?) :
     RecyclerView.Adapter<ChildRecyclerViewHolder>() {
 
-    private var mBooksList: List<BooksVO> = listOf()
+    private var mBookList: List<BookVO>? = null
 
     companion object {
         const val BOOK_TYPE_ACTIVITY_NAME = "BOOKSTYPEPRESENTERIMPL"
@@ -42,10 +42,8 @@ class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate?) :
         } else if (mActivityName.contains(YOUR_BOOKS_FRAGMENT_NAME, ignoreCase = true)) {
             setUpResizeViewHolder(holder)
         }
-        if (mBooksList.isNotEmpty()){
 
-        }
-        holder.bindData(mBooksList[position])
+        holder.bindData(mBookList?.get(position))
     }
 
     //Resize width/height of ViewHolder
@@ -53,16 +51,15 @@ class ChildRecyclerAdapter(private val mDelegate: ChildRecyclerDelegate?) :
         holder.mChildLayout.layoutParams.width = TableLayout.LayoutParams.MATCH_PARENT
         holder.mImageView.layoutParams.height = 800
         holder.mImageView.layoutParams.width = TableLayout.LayoutParams.MATCH_PARENT
-
     }
 
     override fun getItemCount(): Int {
-        return mBooksList?.count() ?: 0
+        return mBookList?.size ?: 0
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setNewData(bookList: List<BooksVO>) {
-        mBooksList = bookList
+    fun setNewData(bookList: List<BookVO>?) {
+        mBookList = bookList
         notifyDataSetChanged()
     }
 }

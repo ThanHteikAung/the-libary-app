@@ -75,8 +75,5 @@ class YourShelvesDetailListActivity : BaseActivity(), YourBooksView {
         mSortByFragment.show(supportFragmentManager, null)
     }
 
-    override fun bindData(list: List<ListVO>) {
-
-    }
 
 }

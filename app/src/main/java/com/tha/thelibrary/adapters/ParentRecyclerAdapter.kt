@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tha.thelibrary.R
-import com.tha.thelibrary.data.vos.ListVO
+import com.tha.thelibrary.data.vos.ListBookCategoryVO
 import com.tha.thelibrary.delegates.ChildRecyclerDelegate
 import com.tha.thelibrary.delegates.ParentRecyclerDelegate
 import com.tha.thelibrary.view.viewholders.ParentRecyclerViewHolder
@@ -17,7 +17,7 @@ class ParentRecyclerAdapter(
 ) : RecyclerView.Adapter<ParentRecyclerViewHolder>() {
 
     private lateinit var mChildRecyclerAdapter: ChildRecyclerAdapter
-    private var mBooksList: List<ListVO> = listOf()
+    private var mListBookCategory: List<ListBookCategoryVO>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParentRecyclerViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -39,21 +39,19 @@ class ParentRecyclerAdapter(
             adapter = mChildRecyclerAdapter
         }
 
-        if (mBooksList.isNotEmpty()) {
-            holder.bindData(mBooksList[position])
-
-            mBooksList[position].books?.let { mChildRecyclerAdapter.setNewData(it) }
-
+        mListBookCategory?.let { listBookCategory ->
+            holder.bindData(listBookCategory[position])
         }
+        mChildRecyclerAdapter.setNewData(mListBookCategory?.get(position)?.books)
     }
 
     override fun getItemCount(): Int {
-        return mBooksList.count()
+        return mListBookCategory?.size ?: 0
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setNewData(bookList: List<ListVO>) {
-        mBooksList = bookList
+    fun setNewData(listBookCategory: List<ListBookCategoryVO>?) {
+        mListBookCategory = listBookCategory
         notifyDataSetChanged()
     }
 }

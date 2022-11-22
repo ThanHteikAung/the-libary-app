@@ -12,5 +12,4 @@ interface YourBooksView {
     fun showLargeGrid()
     fun showListOptionMenu()
     fun showSortByRadioOptionMenu()
-    fun bindData(list: List<BooksVO>)
 }

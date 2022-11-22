@@ -21,9 +21,9 @@ class CarouselAdapter(private val mDelegate: CarouselDelegate) :
     }
 
     override fun onBindViewHolder(holder: CarouselViewHolder, position: Int) {
-        if (mBookList?.isNotEmpty() == true) {
+        /*if (mBookList?.isNotEmpty() == true) {
             holder.onBindData(mBookList!![position])
-        }
+        }*/
         //testing
         /*if (position % 2 == 0) {
             holder.carouselLayout.setPadding(100, 0, 100, 0)
@@ -35,7 +35,7 @@ class CarouselAdapter(private val mDelegate: CarouselDelegate) :
     }
 
     override fun getItemCount(): Int {
-        return mBookList?.count() ?: 0
+        return 5
     }
 
     @SuppressLint("NotifyDataSetChanged")

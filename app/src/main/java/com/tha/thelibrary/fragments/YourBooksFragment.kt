@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.tha.thelibrary.R
-import com.tha.thelibrary.data.vos.BooksVO
-import com.tha.thelibrary.data.vos.ListVO
 import com.tha.thelibrary.mvp.presenters.YourBooksPresenter
 import com.tha.thelibrary.mvp.presenters.YourBooksPresenterImpl
 import com.tha.thelibrary.mvp.views.YourBooksView
@@ -47,7 +45,6 @@ class YourBooksFragment : BaseFragment(), YourBooksView {
     }
 
 
-
     override fun showCarouselOptionMenu() {
         context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
     }
@@ -77,10 +74,6 @@ class YourBooksFragment : BaseFragment(), YourBooksView {
     override fun showSortByRadioOptionMenu() {
         mSortByFragment = SortByFragment()
         mSortByFragment.show(childFragmentManager, null)
-    }
-
-    override fun bindData(list: List<BooksVO>) {
-
     }
 
 }

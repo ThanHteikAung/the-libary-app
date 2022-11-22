@@ -5,7 +5,7 @@ import com.tha.thelibrary.delegates.ChildRecyclerDelegate
 import com.tha.thelibrary.delegates.ParentRecyclerDelegate
 import com.tha.thelibrary.mvp.views.HomeView
 
-interface HomePresenter:IBasePresenter, ParentRecyclerDelegate, ChildRecyclerDelegate,
+interface HomePresenter : ParentRecyclerDelegate, ChildRecyclerDelegate,
     CarouselDelegate {
-    fun initView(view:HomeView)
+    fun initView(view: HomeView)
 }
