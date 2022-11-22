@@ -1,8 +1,6 @@
 package com.tha.thelibrary.mvp.presenters
 
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
-import com.tha.thelibrary.data.vos.BooksVO
 import com.tha.thelibrary.mvp.views.HomeView
 
 class HomePresenterImpl : ViewModel(), HomePresenter {

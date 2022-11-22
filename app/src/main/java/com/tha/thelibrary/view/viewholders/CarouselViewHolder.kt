@@ -3,7 +3,7 @@ package com.tha.thelibrary.view.viewholders
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.tha.thelibrary.data.vos.BooksVO
+import com.tha.thelibrary.data.vos.BookVO
 import com.tha.thelibrary.delegates.CarouselDelegate
 import kotlinx.android.synthetic.main.view_holder_carousel.view.*
 
@@ -21,7 +21,7 @@ class CarouselViewHolder(itemView: View, private val mDelegate: CarouselDelegate
         }
     }
 
-    fun onBindData(books: BooksVO) {
+    fun onBindData(books: BookVO) {
         Glide.with(itemView.context)
             .load(books.bookImage)
             .into(itemView.ivCarouselImage)

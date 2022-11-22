@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tha.thelibrary.R
-import com.tha.thelibrary.data.vos.BooksVO
+import com.tha.thelibrary.data.vos.BookVO
 import com.tha.thelibrary.delegates.CarouselDelegate
 import com.tha.thelibrary.view.viewholders.CarouselViewHolder
 
 class CarouselAdapter(private val mDelegate: CarouselDelegate) :
     RecyclerView.Adapter<CarouselViewHolder>() {
 
-    private var mBookList: List<BooksVO>? = null
+    private var mBookList: List<BookVO>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarouselViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -39,7 +39,7 @@ class CarouselAdapter(private val mDelegate: CarouselDelegate) :
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setNewData(bookList: List<BooksVO>?) {
+    fun setNewData(bookList: List<BookVO>?) {
         mBookList = bookList
         notifyDataSetChanged()
     }

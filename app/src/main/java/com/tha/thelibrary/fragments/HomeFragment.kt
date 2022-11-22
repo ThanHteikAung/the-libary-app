@@ -28,7 +28,7 @@ class HomeFragment : BaseFragment(), HomeView {
     private lateinit var mOuterRecyclerAdapter: ParentRecyclerAdapter
 
     private lateinit var mPresenter: HomePresenter
-    private var mBookModel: BookModel = BookModelImpl()
+    private var mBookModel: BookModel = BookModelImpl
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
