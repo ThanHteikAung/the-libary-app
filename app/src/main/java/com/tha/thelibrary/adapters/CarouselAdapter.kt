@@ -21,6 +21,7 @@ class CarouselAdapter(private val mDelegate: CarouselDelegate) :
     }
 
     override fun onBindViewHolder(holder: CarouselViewHolder, position: Int) {
+        holder.onBindData(mBookList?.get(position))
         /*if (mBookList?.isNotEmpty() == true) {
             holder.onBindData(mBookList!![position])
         }*/
@@ -35,7 +36,7 @@ class CarouselAdapter(private val mDelegate: CarouselDelegate) :
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return mBookList?.count() ?: 0
     }
 
     @SuppressLint("NotifyDataSetChanged")

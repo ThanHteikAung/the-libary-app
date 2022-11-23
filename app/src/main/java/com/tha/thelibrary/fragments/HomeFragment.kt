@@ -15,8 +15,7 @@ import com.tha.thelibrary.R
 import com.tha.thelibrary.activities.BooksTypeActivity
 import com.tha.thelibrary.adapters.CarouselAdapter
 import com.tha.thelibrary.adapters.ParentRecyclerAdapter
-import com.tha.thelibrary.data.models.BookModel
-import com.tha.thelibrary.data.models.BookModelImpl
+import com.tha.thelibrary.data.vos.BookVO
 import com.tha.thelibrary.data.vos.ListBookCategoryVO
 import com.tha.thelibrary.mvp.presenters.HomePresenter
 import com.tha.thelibrary.mvp.presenters.HomePresenterImpl
@@ -30,7 +29,6 @@ class HomeFragment : BaseFragment(), HomeView {
     private lateinit var mOuterRecyclerAdapter: ParentRecyclerAdapter
 
     private lateinit var mPresenter: HomePresenter
-    private var mBookModel: BookModel = BookModelImpl
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -136,6 +134,10 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun showHomeEbooks(listBookCategory: List<ListBookCategoryVO>) {
         mOuterRecyclerAdapter.setNewData(listBookCategory)
+    }
+
+    override fun showHomeCarousel(listReadBook: List<BookVO>) {
+        mCarouselAdapter.setNewData(listReadBook)
     }
 
     override fun showError(error: String) {

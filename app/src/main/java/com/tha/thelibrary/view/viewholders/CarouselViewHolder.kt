@@ -21,9 +21,9 @@ class CarouselViewHolder(itemView: View, private val mDelegate: CarouselDelegate
         }
     }
 
-    fun onBindData(books: BookVO) {
+    fun onBindData(books: BookVO?) {
         Glide.with(itemView.context)
-            .load(books.bookImage)
+            .load(books?.bookImage)
             .into(itemView.ivCarouselImage)
     }
 }

@@ -1,6 +1,7 @@
 package com.tha.thelibrary.mvp.presenters
 
 import androidx.lifecycle.ViewModel
+import com.tha.thelibrary.data.vos.BookVO
 import com.tha.thelibrary.mvp.views.BooksTypeView
 
 class BooksTypePresenterImpl : ViewModel(), BooksTypePresenter {
@@ -11,6 +12,10 @@ class BooksTypePresenterImpl : ViewModel(), BooksTypePresenter {
 
     override fun onTapOptionMenu() {
         mView.showOptionMenu()
+    }
+
+    override fun onTapImage(book: BookVO?) {
+
     }
 
 

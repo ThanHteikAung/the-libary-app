@@ -20,6 +20,9 @@ interface ListBookCategoryDao {
     @Query("SELECT * FROM listBookCategory")
     fun getListBookCategory(): LiveData<List<ListBookCategoryVO>>
 
+    @Query("SELECT * FROM book")
+    fun getListSaveReadBook(): LiveData<List<BookVO>>
+
     @Query("DELETE FROM listBookCategory")
     fun deleteAllListBookCategory()
 

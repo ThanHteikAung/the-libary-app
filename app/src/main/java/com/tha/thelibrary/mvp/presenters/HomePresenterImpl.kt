@@ -4,6 +4,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import com.tha.thelibrary.data.models.BookModel
 import com.tha.thelibrary.data.models.BookModelImpl
+import com.tha.thelibrary.data.vos.BookVO
 import com.tha.thelibrary.mvp.views.HomeView
 
 class HomePresenterImpl : ViewModel(), HomePresenter {
@@ -16,11 +17,21 @@ class HomePresenterImpl : ViewModel(), HomePresenter {
     }
 
     override fun onUiReady(owner: LifecycleOwner) {
+
+        //get Ebooks data from persistence
         mBookModel.getOverview {
             mView?.showError(it)
         }?.observe(owner){
             mView?.showHomeEbooks(it)
         }
+
+        //get Carousel already read data from persistence
+        mBookModel.getSaveReadBook {
+            mView?.showError(it)
+        }?.observe(owner){
+            mView?.showHomeCarousel(it)
+        }
+
     }
 
     override fun onTapParentRecyclerHeader() {
@@ -29,6 +40,10 @@ class HomePresenterImpl : ViewModel(), HomePresenter {
 
     override fun onTapOptionMenu() {
         mView.showEbooksOptionMenu()
+    }
+
+    override fun onTapImage(book: BookVO?) {
+        mBookModel.insertReadBook(book)
     }
 
     override fun onTapCarouselOptionMenu() {

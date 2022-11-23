@@ -1,6 +1,7 @@
 package com.tha.thelibrary.data.models
 
 import androidx.lifecycle.LiveData
+import com.tha.thelibrary.data.vos.BookVO
 import com.tha.thelibrary.data.vos.ListBookCategoryVO
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -23,4 +24,15 @@ object BookModelImpl : BookModel, BaseModel() {
             })
         return mBookDataBase?.listBookCategoryDao()?.getListBookCategory()
     }
+
+    override fun insertReadBook(book: BookVO?) {
+        //Database insert
+        mBookDataBase?.listBookCategoryDao()?.insertSingleBook(book)
+    }
+
+    override fun getSaveReadBook(onFailure: (String) -> Unit): LiveData<List<BookVO>>? {
+        //Get book list from Database
+        return mBookDataBase?.listBookCategoryDao()?.getListSaveReadBook()
+    }
+
 }

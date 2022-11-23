@@ -13,15 +13,19 @@ class ChildRecyclerViewHolder(itemView: View, private val mDelegate: ChildRecycl
     RecyclerView.ViewHolder(itemView) {
     val mImageView: ShapeableImageView = itemView.ivInnerGenreBooks
     val mChildLayout: RelativeLayout = itemView.rlChildItemLayout
+    private var mBook: BookVO? = null
 
     init {
         itemView.ivChildOptionMenu.setOnClickListener {
             mDelegate?.onTapOptionMenu()
         }
+        itemView.ivInnerGenreBooks.setOnClickListener {
+            mDelegate?.onTapImage(mBook)
+        }
     }
 
     fun bindData(book: BookVO?) {
-
+        mBook = book
         Glide.with(itemView.context)
             .load(book?.bookImage)
             .into(itemView.ivInnerGenreBooks)
