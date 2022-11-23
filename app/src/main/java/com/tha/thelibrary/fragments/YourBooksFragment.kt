@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.tha.thelibrary.R
+import com.tha.thelibrary.data.vos.BookVO
 import com.tha.thelibrary.mvp.presenters.YourBooksPresenter
 import com.tha.thelibrary.mvp.presenters.YourBooksPresenterImpl
 import com.tha.thelibrary.mvp.views.YourBooksView
@@ -31,6 +33,8 @@ class YourBooksFragment : BaseFragment(), YourBooksView {
         super.onViewCreated(view, savedInstanceState)
         setUpPresenter()
         setUpCustomViewPod()
+
+        mPresenter.onUiReady(this)
     }
 
     private fun setUpPresenter() {
@@ -74,6 +78,14 @@ class YourBooksFragment : BaseFragment(), YourBooksView {
     override fun showSortByRadioOptionMenu() {
         mSortByFragment = SortByFragment()
         mSortByFragment.show(childFragmentManager, null)
+    }
+
+    override fun showYourBooksOrYourShelves(bookList: List<BookVO>) {
+        mCustomLayoutViewPod.setUpNewData(bookList)
+    }
+
+    override fun showError(error: String) {
+        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
     }
 
 }

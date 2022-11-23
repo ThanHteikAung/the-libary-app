@@ -6,7 +6,7 @@ import com.tha.thelibrary.delegates.ViewAsDelegate
 import com.tha.thelibrary.mvp.views.YourBooksView
 import com.tha.thelibrary.view.viewpods.CustomLayoutViewPod
 
-interface YourBooksPresenter : ChildRecyclerDelegate, CustomLayoutViewPod.Delegate, ViewAsDelegate,
+interface YourBooksPresenter :IBasePresenter, ChildRecyclerDelegate, CustomLayoutViewPod.Delegate, ViewAsDelegate,
     ListDelegate {
     fun initView(view: YourBooksView)
 }
