@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +17,7 @@ import com.tha.thelibrary.adapters.CarouselAdapter
 import com.tha.thelibrary.adapters.ParentRecyclerAdapter
 import com.tha.thelibrary.data.models.BookModel
 import com.tha.thelibrary.data.models.BookModelImpl
+import com.tha.thelibrary.data.vos.ListBookCategoryVO
 import com.tha.thelibrary.mvp.presenters.HomePresenter
 import com.tha.thelibrary.mvp.presenters.HomePresenterImpl
 import com.tha.thelibrary.mvp.views.HomeView
@@ -46,16 +47,9 @@ class HomeFragment : BaseFragment(), HomeView {
         setUpTabLayout()
         setUpParentRecycler()
         setUpTabLayoutListener()
-        requestData()
 
-    }
+        mPresenter.onUiReady(this)
 
-    private fun requestData() {
-        mBookModel.getOverview {
-            //Show error message
-        }?.observe(viewLifecycleOwner, Observer {
-            mOuterRecyclerAdapter.setNewData(it)
-        })
     }
 
     private fun setUpPresenter() {
@@ -138,6 +132,14 @@ class HomeFragment : BaseFragment(), HomeView {
 
     override fun showEbooksOptionMenu() {
         context?.let { showBottomSheet(it, R.layout.option_menu_book_sheet) }
+    }
+
+    override fun showHomeEbooks(listBookCategory: List<ListBookCategoryVO>) {
+        mOuterRecyclerAdapter.setNewData(listBookCategory)
+    }
+
+    override fun showError(error: String) {
+        Toast.makeText(context, error, Toast.LENGTH_LONG).show()
     }
 
 }
