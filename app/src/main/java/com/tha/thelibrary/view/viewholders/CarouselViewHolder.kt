@@ -9,6 +9,9 @@ import kotlinx.android.synthetic.main.view_holder_carousel.view.*
 
 class CarouselViewHolder(itemView: View, private val mDelegate: CarouselDelegate) :
     RecyclerView.ViewHolder(itemView) {
+
+    private var mBook: BookVO? = null
+
     /*val carouselLayout : RelativeLayout = itemView.rlCarouselLayout*/
     /*val carouselImage : ShapeableImageView = itemView.ivCarouselImage
     val carouselOptionMenu : AppCompatImageView = itemView.ivCarouselOptionMenu
@@ -17,13 +20,14 @@ class CarouselViewHolder(itemView: View, private val mDelegate: CarouselDelegate
 
     init {
         itemView.ivCarouselOptionMenu.setOnClickListener {
-            mDelegate.onTapCarouselOptionMenu()
+            mDelegate.onTapCarouselOptionMenu(mBook)
         }
     }
 
-    fun onBindData(books: BookVO?) {
+    fun onBindData(book: BookVO?) {
+        mBook = book
         Glide.with(itemView.context)
-            .load(books?.bookImage)
+            .load(book?.bookImage)
             .into(itemView.ivCarouselImage)
     }
 }

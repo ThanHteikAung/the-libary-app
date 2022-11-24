@@ -120,16 +120,24 @@ class HomeFragment : BaseFragment(), HomeView {
         })
     }
 
-    override fun showCarouselOptionMenu() {
-        context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
+    override fun showCarouselOptionMenu(book: BookVO?) {
+        context?.let {
+            if (book != null) {
+                showBottomSheet(it, R.layout.carousel_menu_book_sheet, book)
+            }
+        }
     }
 
     override fun showEbooksCategory() {
         startActivity(context?.let { BooksTypeActivity.newIntent(it) })
     }
 
-    override fun showEbooksOptionMenu() {
-        context?.let { showBottomSheet(it, R.layout.option_menu_book_sheet) }
+    override fun showEbooksOptionMenu(book: BookVO?) {
+        context?.let {
+            if (book != null) {
+                showBottomSheet(it, R.layout.option_menu_book_sheet, book)
+            }
+        }
     }
 
     override fun showHomeEbooks(listBookCategory: List<ListBookCategoryVO>) {

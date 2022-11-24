@@ -38,15 +38,15 @@ class HomePresenterImpl : ViewModel(), HomePresenter {
         mView.showEbooksCategory()
     }
 
-    override fun onTapOptionMenu() {
-        mView.showEbooksOptionMenu()
+    override fun onTapOptionMenu(book: BookVO?) {
+        mView.showEbooksOptionMenu(book)
     }
 
     override fun onTapImage(book: BookVO?) {
         mBookModel.insertReadBook(book)
     }
 
-    override fun onTapCarouselOptionMenu() {
-        mView.showCarouselOptionMenu()
+    override fun onTapCarouselOptionMenu(book: BookVO?) {
+        mView.showCarouselOptionMenu(book)
     }
 }

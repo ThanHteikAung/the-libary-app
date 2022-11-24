@@ -10,7 +10,7 @@ class BooksTypePresenterImpl : ViewModel(), BooksTypePresenter {
         mView = view
     }
 
-    override fun onTapOptionMenu() {
+    override fun onTapOptionMenu(book: BookVO?) {
         mView.showOptionMenu()
     }
 

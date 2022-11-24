@@ -4,6 +4,6 @@ import com.tha.thelibrary.data.vos.BookVO
 
 interface ChildRecyclerDelegate {
 
-    fun onTapOptionMenu()
+    fun onTapOptionMenu(book: BookVO?)
     fun onTapImage(book: BookVO?)
 }

@@ -41,6 +41,7 @@
                     android:textSize="@dimen/text_regular_3x" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAuthorName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvOptionMenuTitle"

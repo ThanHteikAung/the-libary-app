@@ -25,16 +25,16 @@ class YourBooksPresenterImpl : ViewModel(), YourBooksPresenter {
         })
     }
 
-    override fun onTapOptionMenu() {
-        mView.showListOptionMenu()
+    override fun onTapOptionMenu(book: BookVO?) {
+        mView.showListOptionMenu(book)
     }
 
     override fun onTapImage(book: BookVO?) {
 
     }
 
-    override fun onTapListOptionMenu() {
-        mView.showCarouselOptionMenu()
+    override fun onTapListOptionMenu(book: BookVO?) {
+        mView.showCarouselOptionMenu(book)
     }
 
     override fun onTapViewAs() {

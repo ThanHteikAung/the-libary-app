@@ -12,7 +12,7 @@ import com.tha.thelibrary.mvp.presenters.BooksTypePresenterImpl
 import com.tha.thelibrary.mvp.views.BooksTypeView
 import kotlinx.android.synthetic.main.activity_books_type.*
 
-class BooksTypeActivity : BaseActivity(),BooksTypeView {
+class BooksTypeActivity : BaseActivity(), BooksTypeView {
 
     private lateinit var mChildRecyclerAdapter: ChildRecyclerAdapter
     private lateinit var mPresenter: BooksTypePresenter
@@ -30,7 +30,7 @@ class BooksTypeActivity : BaseActivity(),BooksTypeView {
         setUpBooksTypeRecycler()
     }
 
-    private fun setUpPresenter(){
+    private fun setUpPresenter() {
         mPresenter = ViewModelProvider(this)[BooksTypePresenterImpl::class.java]
         mPresenter.initView(this)
     }
@@ -43,7 +43,7 @@ class BooksTypeActivity : BaseActivity(),BooksTypeView {
     }
 
     override fun showOptionMenu() {
-        showBottomSheet(this, R.layout.option_menu_book_sheet)
+        //showBottomSheet(this, R.layout.option_menu_book_sheet, book)
     }
 
 }

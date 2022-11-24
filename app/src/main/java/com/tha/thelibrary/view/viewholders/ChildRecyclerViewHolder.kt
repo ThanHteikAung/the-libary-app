@@ -17,7 +17,7 @@ class ChildRecyclerViewHolder(itemView: View, private val mDelegate: ChildRecycl
 
     init {
         itemView.ivChildOptionMenu.setOnClickListener {
-            mDelegate?.onTapOptionMenu()
+            mDelegate?.onTapOptionMenu(mBook)
         }
         itemView.ivInnerGenreBooks.setOnClickListener {
             mDelegate?.onTapImage(mBook)

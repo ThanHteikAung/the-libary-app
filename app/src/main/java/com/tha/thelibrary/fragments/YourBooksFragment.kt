@@ -49,8 +49,12 @@ class YourBooksFragment : BaseFragment(), YourBooksView {
     }
 
 
-    override fun showCarouselOptionMenu() {
-        context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
+    override fun showCarouselOptionMenu(book: BookVO?) {
+        context?.let {
+            if (book != null) {
+                showBottomSheet(it, R.layout.carousel_menu_book_sheet, book)
+            }
+        }
     }
 
     override fun showViewAsRadioOptionMenu() {
@@ -71,8 +75,12 @@ class YourBooksFragment : BaseFragment(), YourBooksView {
         mCustomLayoutViewPod.onTapLargeGrid()
     }
 
-    override fun showListOptionMenu() {
-        context?.let { showBottomSheet(it, R.layout.carousel_menu_book_sheet) }
+    override fun showListOptionMenu(book: BookVO?) {
+        context?.let {
+            if (book != null) {
+                showBottomSheet(it, R.layout.carousel_menu_book_sheet, book)
+            }
+        }
     }
 
     override fun showSortByRadioOptionMenu() {

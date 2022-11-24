@@ -10,13 +10,16 @@ import kotlinx.android.synthetic.main.view_holder_list.view.*
 class ListViewHolder(itemView: View, private val mDelegate: ListDelegate) :
     RecyclerView.ViewHolder(itemView) {
 
+    private var mBook: BookVO? = null
+
     init {
         itemView.ivListOptionMenu.setOnClickListener {
-            mDelegate.onTapListOptionMenu()
+            mDelegate.onTapListOptionMenu(mBook)
         }
     }
 
     fun bindData(book: BookVO?) {
+        mBook = book
         Glide.with(itemView.context)
             .load(book?.bookImage)
             .into(itemView.ivList)

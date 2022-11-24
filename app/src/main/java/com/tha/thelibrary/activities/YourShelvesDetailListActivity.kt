@@ -47,8 +47,10 @@ class YourShelvesDetailListActivity : BaseActivity(), YourBooksView {
         mCustomLayoutViewPod.setUpDelegate(mPresenter)
     }
 
-    override fun showCarouselOptionMenu() {
-        showBottomSheet(this, R.layout.carousel_menu_book_sheet)
+    override fun showCarouselOptionMenu(book: BookVO?) {
+        if (book != null) {
+            showBottomSheet(this, R.layout.carousel_menu_book_sheet, book)
+        }
     }
 
     override fun showViewAsRadioOptionMenu() {
@@ -69,8 +71,10 @@ class YourShelvesDetailListActivity : BaseActivity(), YourBooksView {
         mCustomLayoutViewPod.onTapLargeGrid()
     }
 
-    override fun showListOptionMenu() {
-        showBottomSheet(this, R.layout.carousel_menu_book_sheet)
+    override fun showListOptionMenu(book: BookVO?) {
+        if (book != null) {
+            showBottomSheet(this, R.layout.carousel_menu_book_sheet, book)
+        }
     }
 
     override fun showSortByRadioOptionMenu() {
